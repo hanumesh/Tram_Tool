@@ -1,0 +1,26 @@
+.container_questions{
+    width: 90%;
+    height: 90%;
+    padding-left: 5%;
+    padding-top: 10%;
+}
+
+.labelClass{
+    font-weight: bold;
+}
+/* style="float:right" */
+#getAutoScorebtn{
+    background-color: #004f6bfa;
+    border-color: #004f6bfa;
+    height: 36px;
+    width: 191px;
+    margin-right: 5px;
+    font-size: 13px;
+    line-height: 1;
+    transition: 0s;
+}
+#getAutoScorebtn:hover{
+    background-color: #eae7e67d;
+    color: black;
+    transition-delay: 0.3s;
+}

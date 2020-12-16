@@ -1,0 +1,390 @@
+<app-header></app-header>
+<div class="jumbotron" style="background-color: #fff;">
+
+  <div class="row">
+    <div class="col-md-12" style="padding-top: 5%; padding-bottom: 2%">
+      <button type="button" class="btn btn-primary custom-btn-lg" id="FDbtn" data-toggle="modal" data-target="#myModal">
+        + NEW AUTOMATION IDEAS
+      </button>
+<!--      <button type="button" class="btn btn-primary" (click)="downloadReport($event)"
+        style="background-color: #ebeff1;border-color: #0c0c0c;margin-right:15px;height:30px; float:right;padding-bottom: 2%;">
+        <i class='fa fa-download' style="color:#0e0e0e;font-size: 16px; padding: 2%;"></i>
+      </button>
+      <button type="button" class="btn btn-primary" id="refreshBtn" (click)="refreshDataTable($event)"
+        style="background-color: #ebeff1;border-color: #0c0c0c;height: 30px; float:right;padding-bottom: 2%;">
+        <i class="fa fa-refresh" style="color:#0e0e0e;font-size: 16px; padding:2%; float:right;"></i>
+      </button> -->
+      <!-- <div class="col-md-3"> -->
+        <button type="button" class="btn btn-primary" id="downldbtn" (click)="downloadReport()" data-toggle="tooltip"
+          data-placement="top" title="Download">
+          <i class='fa fa-download' style="color:#0e0e0e;font-size: 23px"></i>
+        </button>
+        <button type="button" class="btn btn-primary" id="refreshBtn" (click)="refreshDataTable($event)"
+          data-toggle="tooltip" data-placement="top" title="Refresh">
+          <i class="fas fa-sync-alt" style="color:#0e0e0e;font-size: 23px"></i>
+        </button>
+      <!-- </div> -->
+    </div>    
+  </div>
+
+  <!-- Filter Search started -->
+  <div class="row" style="padding-top: 0%">
+    <div class="col-md-3">
+      <!-- Another variation with a button Started -->
+      <div class="form-group has-search">
+        <!-- <button class="btn btn-default" contenteditable="false"><i class="fa fa-search form-control-feedback"></i></button> -->
+
+        <span class="fa fa-search form-control-feedback"></span>
+        <input type="text" id="searchinput" class="form-control" [(ngModel)]="automationIdea"
+          placeholder="Search Automation Idea Title">
+        <span id="crossId" *ngIf="automationIdea" (click)="clearText()" class="far fa-times-circle form-control-feedback"
+          aria-hidden="true" style="cursor: pointer; pointer-events: all; padding-left: 253px; top: 2px;"
+          uib-tooltip="clear">
+
+        </span>
+     </div>
+      <!-- Another variation with a button Ended -->
+    </div>
+    <div class="col-md-3">
+      <select class="form-control" id="FormControlSelect1" [(ngModel)]="selectedValue1">
+        <option value="" [disabled]="false">STATUS | Any</option>
+        <option *ngFor="let status of defaultStatusArry" [ngValue]="status">{{status}}</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <select class="form-control" id="FormControlSelect2" [(ngModel)]="selectedValue2">
+        <option value="" [disabled]="false">PRIORITY | Any</option>
+        <option *ngFor="let priority of defaultPriorityArry" >{{priority}}</option>
+      </select>
+
+    </div>
+    <div class="col-md-3">
+      <!-- <select class="form-control" id="FormControlSelect3" [(ngModel)]="selectedValue3">
+        <option value="" [disabled]="false">CREATED BY | Any</option>
+        <option *ngFor="let createdBy of defaultCreatedByArry" [ngValue]="createdBy">{{createdBy}}</option>
+      </select> -->
+
+    </div>
+  </div>
+  <!-- Filter Search ended -->
+
+  <!-- Data table started -->
+  <table class="table table-bordered" style="margin-top: 0%">
+    <thead>
+      <tr>
+        <th>Automation Idea Title</th>
+        <th style="width:90px">Priority</th>
+        <th style="width:180px">Status</th>
+        <th>Created By</th>
+        <th>Updated On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasksList | taskNameFilter:Task_Name | filterByPriority: selectedValue2
+                                               | filterByStatus: selectedValue1 
+                                               | filterByUser: selectedValue3
+                                               | filterByPriorityStatus: [selectedValue2,selectedValue1]
+                                               | paginate: { itemsPerPage: count, currentPage: p }">
+        <td>{{task.TaskName}}</td>
+        <td>{{task.Priority}}</td>
+        <td *ngIf="task.Status == 'Requested' ">
+          Automation is{{task.Status}}
+          <div id="progressID" class="row">
+            <ul class="progressBartest" style="padding-left: 20px;padding-bottom: 0px">
+              <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px; "><i class="far fa-dot-circle"></i></li>
+              <li style="margin: 5px; bottom:5px;color: #8080807a;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #8080807a;margin-left: 6px;margin-right: 2px;"><i class="fas fa-circle"
+                  aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #8080807a; "><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #8080807a;margin-left: 6px;margin-right: 2px;"><i class="fas fa-circle"
+                  aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </td>
+
+        <!-- Planned Status -->
+        <td *ngIf="task.Status == 'Planned'">
+          Automation is {{task.Status}}
+          <div class="row" id="progressID">
+            <ul class="progressBartest" style="padding-left: 20px;">
+              <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-right: 2px;margin-left: 6px;"><i class="fas fa-check-circle"
+                  aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px; "><i class="far fa-dot-circle"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #8080807a; "><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #8080807a;margin-left: 6px;margin-right: 2px;"><i class="fas fa-circle"
+                  aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </td>
+
+        <!-- In Progress Status -->
+        <td *ngIf="task.Status == 'In Progress'">
+          Automation is{{task.Status}}
+          <div class="row" id="progressID">
+            <ul class="progressBartest" style="padding-left: 20px;">
+              <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px; "><i class="fas fa-check-circle"
+                  aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom:5px;color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px;"><i class="fas fa-check-circle"
+                  aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce; "><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px;"><i class="far fa-dot-circle"
+                  aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </td>
+
+
+        <!-- Completed Status -->
+
+        <td *ngIf="task.Status == 'Completed'">
+          Automation is{{task.Status}}
+          <div class="row" id="progressID">
+            <ul class="progressBartest" style="padding-left: 20px;">
+              <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px; "><i class="fas fa-check-circle"
+                  aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom:5px;color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px;"><i class="fas fa-check-circle"
+                  aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce; "><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px;"><i class="fas fa-check-circle"
+                  aria-hidden="true"></i></li>
+            </ul>
+          </div>
+        </td>
+
+
+        <!-- Failed Status -->
+
+        <td *ngIf="task.Status == 'Failed'">
+          <!--  <lable class="labelid">Automation is{{task.Status}}</lable> -->
+          Automation is{{task.Status}}
+          <div class="row" id="progressID">
+            <ul class="progressBartest" style="padding-left: 20px;">
+              <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px; "><i class="fas fa-check-circle"
+                  aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom:5px;color: #13b4ce;"><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: #13b4ce;margin-left: 6px;margin-right: 2px;"><i class="fas fa-check-circle"
+                  aria-hidden="true"></i></li>
+              <li style="margin: 5px; bottom: 5px; color: #13b4ce; "><i class="fas fa-horizontal-rule"></i></li>
+              <li style="color: red;margin-left: 6px;margin-right: 2px;"><i class="far fa-times-circle"></i></li>
+            </ul>
+          </div>
+        </td>
+
+        <td>{{task.CreatedBy}}</td>
+        <td>{{task.UpdatedOn}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Including the pagination control.-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  <!-- Data table ended -->
+
+  <!-- <app-footer></app-footer>  -->
+</div>
+<app-footer></app-footer>
+<!-- Jumbotran ended -->
+
+<!-- Add New Automation Idea -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add New Automation Idea</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="clearRegisterForm()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onDFSubmit()">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>
+                  <b>Automation Idea Title</b>
+                  <span class="required-asteric" style="color:blue;">*</span>
+                </label>
+                <input type="text" formControlName="taskname" [(ngModel)]="taskname" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.taskname.errors }" />
+                <div *ngIf="submitted && f.taskname.errors" class="invalid-feedback">
+                  <div *ngIf="f.taskname.errors.required">Automation Idea is required</div>
+                  <div *ngIf="f.taskname.errors.minlength">Automation Idea must be at least 6 characters</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="Inputuname">
+                  <b>Any change in upcoming months</b>
+                  <!-- <span class="required-asteric" style="color:blue;">*</span> -->
+                </label>
+                <select class="form-control" formControlName="upComingMonths" [(ngModel)]="upComingMonthsModel"
+                  (change)="changeFWName($event)" id="FormControlSelect1"
+                  [ngClass]="{ 'is-invalid': submitted && f.upComingMonths.errors }">
+                  <option value="" [disabled]="false">--- Select a Value ---</option>
+                  <option *ngFor="let upComingMonths of upComingMonthsArray">{{upComingMonths}}</option>
+                </select>
+                <div *ngIf="submitted && f.upComingMonths.errors" class="invalid-feedback">
+                  <div *ngIf="f.upComingMonths.errors.required">You must provide a value!</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- 2nd row started -->
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="Inputuname">
+                  <b>Priority</b>
+                  <span class="required-asteric" style="color:blue;">*</span>
+                </label>
+                <select class="form-control" formControlName="priority" id="priorityIDFW"
+                  [(ngModel)]="dfPriorityDefaultValue" (change)="changePriority($event)"
+                  [ngClass]="{ 'is-invalid': submitted && f.priority.errors }">
+                  <option value="" [disabled]="false">--- Select a Value ---</option>
+                  <option *ngFor="let priority of defaultNewPriorityArry" [ngValue]="priority">{{priority}}</option>
+                </select>
+                <div *ngIf="submitted && f.priority.errors" class="invalid-feedback">
+                  <div *ngIf="f.priority.errors.required">You must provide a value!</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>
+                  <b>Do you have Standard Operating Process</b>
+                  <!-- <span class="required-asteric" style="color:blue;">*</span> -->
+                </label>
+                <select class="form-control" formControlName="operatingProcess" [(ngModel)]="operatingProcessModel"
+                  (change)="changeFWName($event)" id="FormControlSelect1"
+                  [ngClass]="{ 'is-invalid': submitted && f.operatingProcess.errors }">
+                  <option value="" [disabled]="false">--- Select a Value ---</option>
+                  <option *ngFor="let operatingProcess of operatingProcessArray">{{operatingProcess}}</option>
+                </select>
+                <div *ngIf="submitted && f.operatingProcess.errors" class="invalid-feedback">
+                  <div *ngIf="f.operatingProcess.errors.required">You must provide a value!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2nd row ended -->
+
+          <div class="row">
+            <!-- 4th row started -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">
+                  <b>Short Description</b>
+                  <span class="required-asteric" style="color:blue;">*</span>
+                </label>
+                <textarea class="form-control" formControlName="shortDescription" [(ngModel)]="ShortDescription"
+                  id="exampleFormControlTextarea1" rows="3"
+                  [ngClass]="{ 'is-invalid': submitted && f.shortDescription.errors }"></textarea>
+                <div *ngIf="submitted && f.shortDescription.errors" class="invalid-feedback">
+                  <div *ngIf="f.shortDescription.errors.required">Short Description is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>
+                  <b>Do you have Detailed Work Insructions</b>
+                  <!-- <span class="required-asteric" style="color:blue;">*</span> -->
+                </label>
+               <select class="form-control" formControlName="workInstructions" [(ngModel)]="workInstructionsModel"
+                  (change)="changeFWName($event)" id="FormControlSelect1"
+                  [ngClass]="{ 'is-invalid': submitted && f.workInstructions.errors }">
+                  <option value="" [disabled]="false">--- Select a Value ---</option>
+                  <option *ngFor="let workInstructions of workInstructionsArray">{{workInstructions}}</option>
+                </select>
+                <div *ngIf="submitted && f.operatingProcess.errors" class="invalid-feedback">
+                  <div *ngIf="f.operatingProcess.errors.required">You must provide a value!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 4th row ended -->
+<!-- 
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+
+                <label class="col-md-3 col-form-label" for="files">
+                  <b>Attachments</b>
+                  <span class="required-asteric" style="color:blue;">*</span>
+                </label>
+                <div class="col-md-9">
+                  <span class="hidden-file">
+                    <input type="file" name="attachments" formControlName="attachments" #fileInput ng2FileSelect [uploader]="uploader"
+                      (change)="onFileSelected($event)" />
+                  </span>
+                  <div class="btn-group" (click)="fileInput.click()">
+                    <button type="button" class="btn btn-primary" id="ffdAttBtn">
+                      <i class="icon-user icon-white">+</i> Attach New File
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="submitted && f.attachments.errors" class="text-danger">
+                  <div *ngIf="f.attachments.errors.required" style="font-size: 13px;
+                           font-weight: 400; color: #dc3545;line-height: 19px; ">Attachments is mandatory</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-9 mt-1">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Uploaded On</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of uploader.queue">
+                    <td>
+                      {{ item?.file?.name }}
+                    </td>
+                    <td>
+                      {{upLoadedDate}}
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-md" (click)="item.remove()">
+                        <span class="fa fa-trash-o"></span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> -->
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="ffdSubBtn">Submit
+              Automation Idea</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Add New Automation Idea Ended -->

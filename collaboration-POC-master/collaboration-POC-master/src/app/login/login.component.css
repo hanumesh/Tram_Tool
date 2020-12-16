@@ -1,0 +1,30 @@
+.container {    
+    padding-top: 8%;
+    padding-bottom: 15%;
+    padding-left: 25%;
+    padding-right: 25%;
+    max-height: 510px;
+}
+.bg-img{
+    position: fixed;
+    width: 100%;    
+}
+#lgnbtn{
+    background-color: #004f6bfa;
+    transition: 0s;
+}
+#lgnbtn:hover{
+    background-color: #eae7e67d;
+    color: black;
+    transition-delay: 0.3s;
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 70%;
+    height: 38px;
+    margin-left: 190px;
+}
