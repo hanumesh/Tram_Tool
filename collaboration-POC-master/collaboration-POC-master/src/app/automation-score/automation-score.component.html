@@ -1,11 +1,14 @@
-<div style="padding: 5%;">
+<app-header></app-header>
+<div class="jumbotron" style="background-color: #fff;">
 
-  <h5 style="padding-top:10px;" *ngIf="score">
+  <h5 style="padding-top:30px;" *ngIf="score">
+    <img style="width: 500px; margin-left:5px;"  src="assets/automation_score.png" />
     <span style="color: lightseagreen;" >
       Your atomation Score is 60%
     </span>
-    <img style="width: 300px; margin-left:40px;"  src="assets/automation_score.png" />
+  
   </h5>
   
 </div>
 
+<app-footer></app-footer>

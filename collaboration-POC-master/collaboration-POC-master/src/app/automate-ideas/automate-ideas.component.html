@@ -6,7 +6,7 @@
       <button type="button" class="btn btn-primary custom-btn-lg" id="FDbtn" data-toggle="modal" data-target="#myModal">
         + NEW AUTOMATION IDEAS
       </button>
-<!--      <button type="button" class="btn btn-primary" (click)="downloadReport($event)"
+      <!--      <button type="button" class="btn btn-primary" (click)="downloadReport($event)"
         style="background-color: #ebeff1;border-color: #0c0c0c;margin-right:15px;height:30px; float:right;padding-bottom: 2%;">
         <i class='fa fa-download' style="color:#0e0e0e;font-size: 16px; padding: 2%;"></i>
       </button>
@@ -15,16 +15,16 @@
         <i class="fa fa-refresh" style="color:#0e0e0e;font-size: 16px; padding:2%; float:right;"></i>
       </button> -->
       <!-- <div class="col-md-3"> -->
-        <button type="button" class="btn btn-primary" id="downldbtn" (click)="downloadReport()" data-toggle="tooltip"
-          data-placement="top" title="Download">
-          <i class='fa fa-download' style="color:#0e0e0e;font-size: 23px"></i>
-        </button>
-        <button type="button" class="btn btn-primary" id="refreshBtn" (click)="refreshDataTable($event)"
-          data-toggle="tooltip" data-placement="top" title="Refresh">
-          <i class="fas fa-sync-alt" style="color:#0e0e0e;font-size: 23px"></i>
-        </button>
+      <button type="button" class="btn btn-primary" id="downldbtn" (click)="downloadReport()" data-toggle="tooltip"
+        data-placement="top" title="Download">
+        <i class='fa fa-download' style="color:#0e0e0e;font-size: 23px"></i>
+      </button>
+      <button type="button" class="btn btn-primary" id="refreshBtn" (click)="refreshDataTable($event)"
+        data-toggle="tooltip" data-placement="top" title="Refresh">
+        <i class="fas fa-sync-alt" style="color:#0e0e0e;font-size: 23px"></i>
+      </button>
       <!-- </div> -->
-    </div>    
+    </div>
   </div>
 
   <!-- Filter Search started -->
@@ -37,12 +37,12 @@
         <span class="fa fa-search form-control-feedback"></span>
         <input type="text" id="searchinput" class="form-control" [(ngModel)]="automationIdea"
           placeholder="Search Automation Idea Title">
-        <span id="crossId" *ngIf="automationIdea" (click)="clearText()" class="far fa-times-circle form-control-feedback"
-          aria-hidden="true" style="cursor: pointer; pointer-events: all; padding-left: 253px; top: 2px;"
-          uib-tooltip="clear">
+        <span id="crossId" *ngIf="automationIdea" (click)="clearText()"
+          class="far fa-times-circle form-control-feedback" aria-hidden="true"
+          style="cursor: pointer; pointer-events: all; padding-left: 253px; top: 2px;" uib-tooltip="clear">
 
         </span>
-     </div>
+      </div>
       <!-- Another variation with a button Ended -->
     </div>
     <div class="col-md-3">
@@ -55,7 +55,7 @@
     <div class="col-md-3">
       <select class="form-control" id="FormControlSelect2" [(ngModel)]="selectedValue2">
         <option value="" [disabled]="false">PRIORITY | Any</option>
-        <option *ngFor="let priority of defaultPriorityArry" >{{priority}}</option>
+        <option *ngFor="let priority of defaultPriorityArry">{{priority}}</option>
       </select>
 
     </div>
@@ -310,7 +310,7 @@
                   <b>Do you have Detailed Work Insructions</b>
                   <!-- <span class="required-asteric" style="color:blue;">*</span> -->
                 </label>
-               <select class="form-control" formControlName="workInstructions" [(ngModel)]="workInstructionsModel"
+                <select class="form-control" formControlName="workInstructions" [(ngModel)]="workInstructionsModel"
                   (change)="changeFWName($event)" id="FormControlSelect1"
                   [ngClass]="{ 'is-invalid': submitted && f.workInstructions.errors }">
                   <option value="" [disabled]="false">--- Select a Value ---</option>
@@ -323,7 +323,7 @@
             </div>
           </div>
           <!-- 4th row ended -->
-<!-- 
+          <!-- 
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
@@ -378,8 +378,8 @@
             </div>
           </div> -->
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" id="ffdSubBtn">Submit
-              Automation Idea</button>
+            <button type="submit" class="btn btn-primary" id="ffdSubBtn" (click)="questions()">More Questions
+            </button>
           </div>
         </form>
       </div>

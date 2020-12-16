@@ -362,4 +362,10 @@ export class AutomateIdeasComponent implements OnInit {
     }
     return str;
   }
+
+  questions(){
+  // todo ON 201 
+    this.router.navigateByUrl('/questions');
+    this.showModal = false;   
+  }
 }
