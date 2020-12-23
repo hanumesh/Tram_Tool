@@ -11,7 +11,7 @@ export class FilterByUserPipe implements PipeTransform {
       return value;
     }
     return value.filter((val) => {
-      let rVal = (((val.CreatedBy.includes(args))));
+      let rVal = (((val.email.includes(args))));
       return rVal;
     })
 

@@ -10,7 +10,7 @@ export class FilterByPriorityPipe implements PipeTransform {
       return value;
     }
     return value.filter((val) => {
-      let rVal = (((val.Priority.includes(args))));
+      let rVal = (((val.priority.includes(args))));
       return rVal;
     })
 

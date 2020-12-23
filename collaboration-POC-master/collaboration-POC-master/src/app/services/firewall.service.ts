@@ -110,20 +110,20 @@ private listOfFirewalls: any = [
    createFD(fdData: any): Observable<any> {
     let urlReg = this.baseUri + '/new';
     return this.http.post(urlReg, fdData)
-      .pipe(catchError(this.errorHandler))
+      
   }
 
-   createFD_bkup(fdData: any): Observable<any>{
-    console.log("Inside createFD() method");
-    // alert("Inside createFD() method");
-    let urlFD = this.baseUri+'/new';
-    // return this.http.post(urlFD, fdData, this.httpOptions).pipe(
-    //    catchError(this.errorHandler));
-    // oEtJNThI0zVD4Ph2mCHZ
-    // console.log("createFD: "+localStorage.getItem('sessionID'));
-    return this.http.post(urlFD, fdData).pipe(
-       catchError(this.errorHandler));
- }
+//    createFD_bkup(fdData: any): Observable<any>{
+//     console.log("Inside createFD() method");
+//     // alert("Inside createFD() method");
+//     let urlFD = this.baseUri+'/new';
+//     // return this.http.post(urlFD, fdData, this.httpOptions).pipe(
+//     //    catchError(this.errorHandler));
+//     // oEtJNThI0zVD4Ph2mCHZ
+//     // console.log("createFD: "+localStorage.getItem('sessionID'));
+//     return this.http.post(urlFD, fdData).pipe(
+//        catchError(this.errorHandler));
+//  }
 
  errorHandler(error) {
   let errorMessage = '';

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
@@ -20,8 +20,8 @@ const URL = 'http://localhost:4200/fileupload/';
   styleUrls: ['./automate-ideas.component.css']
 })
 export class AutomateIdeasComponent implements OnInit {
-
-  baseUri: string = 'http://130.61.255.170:5000/saveNewAutomationIdea';
+  @ViewChild('closebutton') closebutton;
+  
 
   isValid = false;
   showModal: boolean;
@@ -84,7 +84,18 @@ export class AutomateIdeasComponent implements OnInit {
   ) {
    // this.upLoadedDateFDToday = formatDate(this.upLoadedDateFD, 'dd-MM-yyyy hh:mm a', 'en-US', '+0530');
     this.tasksList[0] = this.firewallService.getAllFirewalls();
+    this.registerForm = this.formBuilder.group({
+      taskname: ['', [Validators.required, Validators.minLength(6)]],
+      // status: ['', [Validators.required]],
+      upComingMonths: [''],
+      workInstructions: [''],
+      operatingProcess: [''],
+      priority: ['', Validators.required],
+      shortDescription: ['', Validators.required],
 
+      // attachments: ['', Validators.required],
+      updatedOn: [null, Validators.nullValidator]
+    });
   };
 
   show() {
@@ -98,18 +109,7 @@ export class AutomateIdeasComponent implements OnInit {
   ngOnInit() {
     this.refreshDataTableDFNav(1);
 
-    this.registerForm = this.formBuilder.group({
-      taskname: ['', [Validators.required, Validators.minLength(6)]],
-      // status: ['', [Validators.required]],
-      upComingMonths: [''],
-      workInstructions: [''],
-      operatingProcess: [''],
-      priority: ['', Validators.required],
-      shortDescription: ['', Validators.required],
-
-      // attachments: ['', Validators.required],
-      updatedOn: [null, Validators.nullValidator]
-    });
+   
   }
 
   /* Select Dropdown error handling */
@@ -147,30 +147,23 @@ export class AutomateIdeasComponent implements OnInit {
         (respFD) => {
           console.log(JSON.stringify(respFD));
           if (respFD.id)  {
-            // alert("Firewall Deploy submitted successfully!")
-            console.log(respFD);
-            // this.isDFWSuccessResp = true;
-            // window.location.reload();
-            // this.hide();
-            // this.getAllFW();
-            // this.isDFWSuccessResp = true;  
            
+            // this.isDFWSuccessResp = true;
+            this.closebutton.nativeElement.click();
+
+            
+            setTimeout(() => {
+              this.router.navigateByUrl('/questions');
+            }, 2000);
+          
             
           }
-          this.isDFWSuccessResp = true;
-          this.router.navigateByUrl('/questions');
+         // this.isDFWSuccessResp = true;                  
           // this.alert.success("success") 
           // this.hide();
         }, (error) => {
           console.log("Error", error)
-          // console.log(errorFD);
-          // console.log(JSON.stringify(errorFD));
-          // alert(errorFD.message);
-          this.isDFWErrorResponse = true;
-          // this.errorDFWMsg = "Response Error:  " + errorFD.message;
-          // if (errorFD.status == 400 && errorFD.statusText == "BAD REQUEST") {
-          //   this.errorDFWMsg = errorFD.error.message
-          // }
+         
         }
       );
     }
@@ -364,7 +357,7 @@ export class AutomateIdeasComponent implements OnInit {
 
   questions() {
     // todo ON 201 
-    this.onDFSubmit();
+    //this.onDFSubmit();
    
   }
 }

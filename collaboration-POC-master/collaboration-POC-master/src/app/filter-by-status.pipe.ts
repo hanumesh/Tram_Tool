@@ -14,7 +14,7 @@ export class FilterByStatusPipe implements PipeTransform {
       return value;
     }
     return value.filter((val) => {
-      let rVal = (((val.Status.includes(args))));
+      let rVal = (((val.status.includes(args))));
       return rVal;
     })
 

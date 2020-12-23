@@ -9,8 +9,8 @@ export class SearchPipe implements PipeTransform {
       return value;
     }
     return value.filter((val) => {
-      let rVal = (((val.TaskName.toLocaleLowerCase().includes(args)) ||
-                    val.TaskName.includes(args)));
+      let rVal = (((val.taskname.toLocaleLowerCase().includes(args)) ||
+                    val.taskname.includes(args)));
       return rVal;
     })
 

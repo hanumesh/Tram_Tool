@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 })
 export class QuestionsComponent implements OnInit {
 
-  constructor( private router: Router) { }
+  constructor( private router: Router) { 
+   
+  }
   selectedValue1 = '';
   selectedValue2 = '';
   selectedValue3 = '';
@@ -39,6 +41,7 @@ export class QuestionsComponent implements OnInit {
   Maintain_supportArray: string[] = ["Automated ticket creation from mail etc","Automatic ticket assignment","Duplicate issue detection","Automated SLA Tracking  & Notification","Knowledge base for support"];
   Process_OpArray: string[] = ["Purchase to Pay Process","Record to recipt process","Asset Management","Change Management","Demand Management","Backup and Recovery","Request Fulfilment","Reporting and Dashboarding","Monitoring and anamoly detection"];
   ngOnInit() {
+    
   }
 
 
