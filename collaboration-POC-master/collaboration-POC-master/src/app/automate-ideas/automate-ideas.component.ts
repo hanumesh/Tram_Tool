@@ -20,7 +20,7 @@ const URL = 'http://localhost:4200/fileupload/';
   styleUrls: ['./automate-ideas.component.css']
 })
 export class AutomateIdeasComponent implements OnInit {
-  
+
   baseUri: string = 'http://130.61.255.170:5000/saveNewAutomationIdea';
 
   isValid = false;
@@ -37,17 +37,17 @@ export class AutomateIdeasComponent implements OnInit {
   automationIdea: string;
   isDFWSuccessResp: boolean;
   isDFWErrorResponse: boolean;
-  
+
 
   // table declaration started
-  tasksList: Observable<any[]>;
+  tasksList = [];
 
   selectedValue1 = '';
   selectedValue2 = '';
   selectedValue3 = '';
   defaultFirewallValue = '';
 
-  dfPriorityDefaultValue = '';
+  dfPriorityDefaultValue = ''; 
   taskname = '';
   workInstructions = '';
   workInstructionsModel = '';
@@ -82,8 +82,9 @@ export class AutomateIdeasComponent implements OnInit {
     private firewallService: FirewallService,
     private router: Router
   ) {
-    this.upLoadedDateFDToday = formatDate(this.upLoadedDateFD, 'dd-MM-yyyy hh:mm a', 'en-US', '+0530');
-     this.tasksList = this.firewallService.getAllFirewalls();
+   // this.upLoadedDateFDToday = formatDate(this.upLoadedDateFD, 'dd-MM-yyyy hh:mm a', 'en-US', '+0530');
+    this.tasksList[0] = this.firewallService.getAllFirewalls();
+
   };
 
   show() {
@@ -105,6 +106,7 @@ export class AutomateIdeasComponent implements OnInit {
       operatingProcess: [''],
       priority: ['', Validators.required],
       shortDescription: ['', Validators.required],
+
       // attachments: ['', Validators.required],
       updatedOn: [null, Validators.nullValidator]
     });
@@ -124,46 +126,43 @@ export class AutomateIdeasComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onDFSubmit() {
-   alert("Inside onDFSubmit() method");
     //    this.exceltoJson = {};
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-       alert("Please fill mandatory fields in the Form")
+      alert("Please fill mandatory fields in the Form")
       return;
     } else {
       // alert("Inside else condition");
       this.updatedOnValue = formatDate(this.updatedOn, 'dd-MM-yyyy hh:mm a', 'en-US', '+0530');
       // "updatedOn": this.updatedOnValue
-      this.automationData={"NewAutomationIdea":{"taskname": this.registerForm.value.taskname,"priority": this.registerForm.value.priority,"upComingMonths": this.registerForm.value.upComingMonths,"operatingProcess": this.registerForm.value.operatingProcess,"workInstructions": this.registerForm.value.workInstructions,"shortDescription": this.registerForm.value.shortDescription,"updatedOn": moment().format("DD/MM/YYYY HH:mm:ss")}};
-      console.log("automationData: " +JSON.stringify(this.automationData));
+      // Dyanmic value
+      this.automationData = { "NewAutomationIdea": { "taskname": this.registerForm.value.taskname, "priority": this.registerForm.value.priority, "upComingMonths": this.registerForm.value.upComingMonths, "operatingProcess": this.registerForm.value.operatingProcess, "workInstructions": this.registerForm.value.workInstructions, "shortDescription": this.registerForm.value.shortDescription, "updatedOn": moment().format("DD/MM/YYYY HH:mm:ss"), "email": "hanum786@gmail.com" } };
+      console.log("automationData: " + JSON.stringify(this.automationData));
       // this.http.post(this.baseUri , this.automationData).subscribe(
       //   (response) => console.log(response),
       //   (error) => console.log(error)
       // )
-      alert("automationData: "+JSON.stringify(this.automationData));
       this.firewallService.createFD(this.automationData).subscribe(
         (respFD) => {
           console.log(JSON.stringify(respFD));
-          if (respFD.code == 201) {
+          if (respFD.id)  {
             // alert("Firewall Deploy submitted successfully!")
-            console.log("Firewall Deploy submitted successfully!");
             console.log(respFD);
             // this.isDFWSuccessResp = true;
             // window.location.reload();
             // this.hide();
-            console.log(respFD);
             // this.getAllFW();
             // this.isDFWSuccessResp = true;  
+           
+            
           }
           this.isDFWSuccessResp = true;
-          setTimeout(() => {
-            this.clearRegisterForm();
-          }, 2000);
+          this.router.navigateByUrl('/questions');
           // this.alert.success("success") 
           // this.hide();
-        }, (errorFD) => {
-          console.log("Error")
+        }, (error) => {
+          console.log("Error", error)
           // console.log(errorFD);
           // console.log(JSON.stringify(errorFD));
           // alert(errorFD.message);
@@ -273,7 +272,7 @@ export class AutomateIdeasComponent implements OnInit {
       onlySelf: true
     })
   }
-// upComingMonths
+  // upComingMonths
   changeFWName(e) {
     this.registerForm.get('upComingMonths').setValue(e.target.value, {
       onlySelf: true
@@ -292,17 +291,17 @@ export class AutomateIdeasComponent implements OnInit {
   // Refresh Data table
   refreshDataTable($event) {
     console.log("Refresh data table button is clicked...!!!")
-   // alert("Refresh Table Data Development is In Progress...!!!");
+    // alert("Refresh Table Data Development is In Progress...!!!");
     this.selectedValue1 = '';
     this.selectedValue2 = '';
     this.selectedValue3 = '';
     this.tasksList = this.firewallService.getAllFirewalls();
   }
 
-  refreshDataTableDFNav($event) {
-    console.log("Refresh data table Deploy Firewall Nav...!!!")
-    //  alert("Refresh Table Data Development is In Progress...!!!");
+  refreshDataTableDFNav($event) {       
     this.tasksList = this.firewallService.getAllFirewalls();
+    console.log(this.firewallService.getAllFirewalls())
+    console.log(" this.tasksList",  this.tasksList)
   }
 
   clearRegisterForm() {
@@ -363,9 +362,9 @@ export class AutomateIdeasComponent implements OnInit {
     return str;
   }
 
-  questions(){
-  // todo ON 201 
-    this.router.navigateByUrl('/questions');
-    this.showModal = false;   
+  questions() {
+    // todo ON 201 
+    this.onDFSubmit();
+   
   }
 }

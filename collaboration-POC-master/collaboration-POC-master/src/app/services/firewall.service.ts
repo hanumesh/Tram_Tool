@@ -36,10 +36,74 @@ private listOfFirewalls: any = [
   constructor(private http: HttpClient) {    
    }
 
-   getAllFirewalls(): Observable<any>{
-    return this.http.get<any>(this.baseUri);
-    // alert("getAllFirewalls");
-    // return this.listOfFirewalls;
+   getAllFirewalls(){
+    let responeData = [
+      {
+          "email": "hanumesh.palla@aricent.com",
+          "id": "32f5b1bce7c3482faf6aed8c04abb9be",
+          "priority": "2: Medium",
+          "status": "planned",
+          "taskname": "idea testname",
+          "updatedOn": "14/12/2020 11:01:56"
+      },
+      {
+          "email": "sarthak.gambhir@aricent.com",
+          "id": "4137e06e95904813907b7ee6bd5670fd",
+          "priority": "2: Medium",
+          "status": "planned",
+          "taskname": "idea 2 testname",
+          "updatedOn": "14/12/2020 11:01:56"
+      },
+      {
+          "email": "sarthak.gambhir@aricent.com",
+          "id": "8d4b8c629f4c4d87ac8051897a22206c",
+          "priority": "2: Medium",
+          "status": "planned",
+          "taskname": "idea 2 testname3",
+          "updatedOn": "14/12/2020 11:01:56"
+      },
+      {
+          "email": "sarthak.gambhir@aricent.com",
+          "id": "ec2dd2abd9c64c7d9e48b396ecaa9af9",
+          "priority": "2: Medium",
+          "status": "planned",
+          "taskname": "idea 2 testname7",
+          "updatedOn": "14/12/2020 11:01:56"
+      },
+      {
+          "email": "hanum786@gmail.com",
+          "id": "53dfe778e85243448d6802dae32080ba",
+          "priority": "2: Medium",
+          "status": "planned",
+          "taskname": "sdsfdsfsdfsdf",
+          "updatedOn": "23/12/2020 16:24:19"
+      },
+      {
+          "email": "hanum786@gmail.com",
+          "id": "cbee62c02bb64304ad8d6ddfc391318b",
+          "priority": "2: Medium",
+          "status": "planned",
+          "taskname": "sadasdasd",
+          "updatedOn": "23/12/2020 16:27:50"
+      },
+      {
+          "email": "hanum786@gmail.com",
+          "id": "68ea07e593eb48eda99ddad00a948115",
+          "priority": "2: Medium",
+          "status": "planned",
+          "taskname": "fasdfsdfsdaf",
+          "updatedOn": "23/12/2020 16:29:15"
+      },
+      {
+          "email": "hanum786@gmail.com",
+          "id": "4ad8762a76304107bc94c1851372302e",
+          "priority": "2: Medium",
+          "status": "planned",
+          "taskname": "asdasdasdasdd",
+          "updatedOn": "23/12/2020 16:30:27"
+      }
+  ]
+   return responeData;
    }
 
    // Create Service

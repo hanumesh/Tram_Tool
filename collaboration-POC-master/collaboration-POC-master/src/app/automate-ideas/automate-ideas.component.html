@@ -81,15 +81,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasksList | taskNameFilter:Task_Name | filterByPriority: selectedValue2
+      <tr *ngFor="let task of tasksList | taskNameFilter:taskname | filterByPriority: selectedValue2
                                                | filterByStatus: selectedValue1 
                                                | filterByUser: selectedValue3
                                                | filterByPriorityStatus: [selectedValue2,selectedValue1]
                                                | paginate: { itemsPerPage: count, currentPage: p }">
-        <td>{{task.TaskName}}</td>
-        <td>{{task.Priority}}</td>
-        <td *ngIf="task.Status == 'Requested' ">
-          Automation is{{task.Status}}
+        <td>{{task.taskname}}</td>
+        <td>{{task.priority}}</td>
+        <td>{{task.status}}</td>
+        <td>{{task.email}}</td>
+        <td>{{task.updatedOn}}</td>
+        <!-- <td *ngIf="task.status == 'Requested' "> -->
+          <!-- <td>
+          Automation is{{task.status}}
           <div id="progressID" class="row">
             <ul class="progressBartest" style="padding-left: 20px;padding-bottom: 0px">
               <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
@@ -105,9 +109,9 @@
           </div>
         </td>
 
-        <!-- Planned Status -->
-        <td *ngIf="task.Status == 'Planned'">
-          Automation is {{task.Status}}
+      
+          <td>
+          Automation is {{task.status}}
           <div class="row" id="progressID">
             <ul class="progressBartest" style="padding-left: 20px;">
               <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
@@ -123,9 +127,9 @@
           </div>
         </td>
 
-        <!-- In Progress Status -->
-        <td *ngIf="task.Status == 'In Progress'">
-          Automation is{{task.Status}}
+       
+          <td>
+          Automation is{{task.status}}
           <div class="row" id="progressID">
             <ul class="progressBartest" style="padding-left: 20px;">
               <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
@@ -143,10 +147,9 @@
         </td>
 
 
-        <!-- Completed Status -->
-
-        <td *ngIf="task.Status == 'Completed'">
-          Automation is{{task.Status}}
+      
+          <td>
+                      Automation is{{task.status}}
           <div class="row" id="progressID">
             <ul class="progressBartest" style="padding-left: 20px;">
               <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
@@ -164,11 +167,8 @@
         </td>
 
 
-        <!-- Failed Status -->
-
-        <td *ngIf="task.Status == 'Failed'">
-          <!--  <lable class="labelid">Automation is{{task.Status}}</lable> -->
-          Automation is{{task.Status}}
+          <td>
+          Automation is{{task.status}}
           <div class="row" id="progressID">
             <ul class="progressBartest" style="padding-left: 20px;">
               <li style="color: #13b4ce;margin-right: 2px"><i class="fas fa-check-circle" aria-hidden="true"></i></li>
@@ -182,10 +182,10 @@
               <li style="color: red;margin-left: 6px;margin-right: 2px;"><i class="far fa-times-circle"></i></li>
             </ul>
           </div>
-        </td>
+        </td> -->
 
-        <td>{{task.CreatedBy}}</td>
-        <td>{{task.UpdatedOn}}</td>
+       
+       
       </tr>
     </tbody>
   </table>
