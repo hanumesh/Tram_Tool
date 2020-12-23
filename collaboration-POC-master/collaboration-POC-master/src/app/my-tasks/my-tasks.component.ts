@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-my-tasks',
   templateUrl: './my-tasks.component.html',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyTasksComponent  implements OnInit {
   
-  constructor() { }
+  constructor(public sanitizer: DomSanitizer) { }
   
     ngOnInit() {
+     // this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
     }
   
   }

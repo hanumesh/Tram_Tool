@@ -68,13 +68,7 @@ export class AccountService {
 
     return this.http.post<any>(urlLogin, userData).pipe(map(user => {
       console.log(JSON.stringify(user));
-      // let tokenInfo = this.getDecodedAccessToken(JSON.stringify(user.token)); // decode token
-      // let firstname = tokenInfo.user.firstname;
-      // let lastname = tokenInfo.user.lastname;
-      // let fullname = firstname + "  " + lastname;
-      // localStorage.setItem('LoggedInUserEmail', userData.email)
-    //  localStorage.setItem('fullname', fullname);
-     // localStorage.setItem('token', (JSON.stringify(tokenInfo)));
+     
       return user;
     }, (errorHandler) => {
       catchError(errorHandler)
@@ -101,8 +95,6 @@ export class AccountService {
       map(LogoutDone => {
         console.log('LogoutDone', LogoutDone);
         localStorage.removeItem('LoggedInUserEmail');
-        localStorage.removeItem('fullname');
-        localStorage.removeItem('token');
         localStorage.clear();
         this.router.navigateByUrl('/login');
         // window.location.reload();

@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/signin';
-  }
+  }""
 
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
@@ -67,15 +67,13 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     };
     this.accountService.login(this.userData).subscribe((loginResp) => {
-      console.log("start");
       console.log('loginResp', loginResp);
-      console.log("end");
+      localStorage.setItem('LoggedInUserEmail', loginResp.email)
       this.router.navigateByUrl('/automateIdeas');
     }, (errorLogin) => {
       this.isLoginErrorResp = true;
       this.loading = false;
       console.log("error>>>: "+JSON.stringify(errorLogin));
-      this.router.navigateByUrl('/automateIdeas');      
       // this.errorLoginMsg = errorLogin.error.message;
 
     });
