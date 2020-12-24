@@ -378,9 +378,14 @@
             </div>
           </div> -->
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" 
+            <!-- <button type="submit" class="btn btn-primary" 
             id="closeModal" #closebutton debounce=1000 (click)="onDFSubmit()">More Questions
+            </button> -->
+            <button type="submit" class="btn btn-primary" 
+            id="closeModal" #closebutton debounce=1000 
+            class="close" data-dismiss="modal" (click)="onDFSubmit()">More Questions
             </button>
+           
           </div>
         </form>
       </div>

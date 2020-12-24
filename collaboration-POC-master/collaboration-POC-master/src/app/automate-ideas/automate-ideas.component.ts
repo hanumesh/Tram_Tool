@@ -57,12 +57,12 @@ export class AutomateIdeasComponent implements OnInit {
   operatingProcessModel = '';
   ShortDescription = '';
 
-  defaultStatusArry: string[] = ["Requested", "Planned", "In Progress", "Under Review", "Complete"];
+  defaultStatusArry: string[] = ["Requested", "planned", "In Progress", "Under Review", "Complete"];
   defaultPriorityArry: string[] = ["Low", "Medium", "High", "Critical"];
   defaultCreatedByArry: string[] = ["TestName1", "TestName2", "TestName3", "TestName4"];
 
   // New Deploy Firewall declaration
-  defaultNewStatusArry: string[] = ["Requested", "Planned", "In Progress", "Failed", "Complete"];
+  defaultNewStatusArry: string[] = ["Requested", "planned", "In Progress", "Failed", "Complete"];
   workInstructionsArray: string[] = ["Yes", "No"];
   upComingMonthsArray: string[] = ["Yes", "No"];
   operatingProcessArray: string[] = ["Yes", "No"];
@@ -83,7 +83,7 @@ export class AutomateIdeasComponent implements OnInit {
     private router: Router
   ) {
    // this.upLoadedDateFDToday = formatDate(this.upLoadedDateFD, 'dd-MM-yyyy hh:mm a', 'en-US', '+0530');
-    this.tasksList[0] = this.firewallService.getAllFirewalls();
+    this.firewallService.getAllFirewalls();
     this.registerForm = this.formBuilder.group({
       taskname: ['', [Validators.required, Validators.minLength(6)]],
       // status: ['', [Validators.required]],
@@ -106,10 +106,37 @@ export class AutomateIdeasComponent implements OnInit {
     this.showModal = false;
   }
 
-  ngOnInit() {
-    this.refreshDataTableDFNav(1);
 
-   
+  getAllFW() {​​​​​
+    this.firewallService.getAllFirewalls().subscribe(
+      (respAllFW) => {​​​​​
+        // console.log("all firewalls: " + respAllFW.result.length);
+        console.log("all firewalls: " + JSON.stringify(respAllFW));
+        // alert(JSON.stringify(this.firewallService.listOfFirewalls))
+        // const tasksList1 = JSON.stringify(this.firewallService.listOfFirewalls);
+        // this.tasksList = this.firewallService.listOfFirewalls.result;
+     
+        this.tasksList = respAllFW.result;
+        if (this.tasksList.length == 0) {​​​​​
+          //  alert("spinner test"+ this.tasksList.length);
+          
+        }​​​​​
+        //  alert("tasksList>>>>>>>>: "+(this.tasksList.length));
+      }​​​​​, (errorAllFW) => {​​​​​
+        console.log(errorAllFW);
+        console.log(JSON.stringify(errorAllFW));
+        // alert("errorAllFW: "+errorAllFW.message);
+      }​​​​​
+    );
+  }​​​​​
+
+
+
+
+  ngOnInit() {
+    this.getAllFW()
+   // this.refreshDataTableDFNav(1);
+
   }
 
   /* Select Dropdown error handling */
@@ -149,12 +176,12 @@ export class AutomateIdeasComponent implements OnInit {
           if (respFD.id)  {
            
             // this.isDFWSuccessResp = true;
-            this.closebutton.nativeElement.click();
-
-            
-            setTimeout(() => {
-              this.router.navigateByUrl('/questions');
-            }, 2000);
+           // this.closebutton.nativeElement.click();
+           this.clearRegisterForm();
+           this.router.navigateByUrl('/questions');            
+            // setTimeout(() => {
+             
+            // }, 1000);
           
             
           }
@@ -288,11 +315,11 @@ export class AutomateIdeasComponent implements OnInit {
     this.selectedValue1 = '';
     this.selectedValue2 = '';
     this.selectedValue3 = '';
-    this.tasksList = this.firewallService.getAllFirewalls();
+   // this.tasksList  = this.firewallService.getAllFirewalls();
   }
 
   refreshDataTableDFNav($event) {       
-    this.tasksList = this.firewallService.getAllFirewalls();
+    //this.tasksList = this.firewallService.getAllFirewalls();
     console.log(this.firewallService.getAllFirewalls())
     console.log(" this.tasksList",  this.tasksList)
   }
