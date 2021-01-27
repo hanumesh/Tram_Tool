@@ -25,11 +25,22 @@ export class HeaderComponent implements OnInit {
     this.LoggedInUserEmail =  localStorage.getItem('LoggedInUserEmail');
    }
 
+   searchBtn(){
+    //  alert("Inside searchBtn()");
+     this.router.navigateByUrl('/search');
+   }
+
   onLogout() {
+    alert("Inside onLogout() ");
     this.accountService.logout(this.token).subscribe(LogoutSuccess => {
       console.log('LogoutSuccess', LogoutSuccess)
+      alert("Inside success response "+LogoutSuccess);
       this.router.navigateByUrl('/login');
     });
-   // this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login');
+  }
+  myProfileRedirectFunc(){
+    
+    this.router.navigateByUrl('/profile');
   }
 }

@@ -69,7 +69,8 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.userData).subscribe((loginResp) => {
       console.log('loginResp', loginResp);
       localStorage.setItem('LoggedInUserEmail', loginResp.email)
-      this.router.navigateByUrl('/automateIdeas');
+      // this.router.navigateByUrl('/automateIdeas');
+      this.router.navigateByUrl('/home');
     }, (errorLogin) => {
       this.isLoginErrorResp = true;
       this.loading = false;

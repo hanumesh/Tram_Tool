@@ -1,0 +1,233 @@
+<app-header></app-header>
+<!-- <p style="padding-top: 8%;margin-left: 5%;">
+  Posts page!!!
+</p> -->
+<div class="container" style="padding-top: 8%;padding-bottom: 6%;">
+  <div class="row m-0 p-0">
+    <div id="posts-featured" class="col-md-3 border border-dark">
+      <h5 class="text-center my-2">Featured posts</h5>
+      <div class="w-100 px-2 small">
+        <!-- TITLE -->
+        <a href="#" id="post-title" class="text-muted col-md-6 p-0">Post title</a>
+        <p id="post-tags" class="my-2">Tags :
+          <a href="#" class="badge badge-light m-1 px-2">Tag Name</a>
+        </p>
+      </div>
+      <hr class="border-bottom border-primary">
+      <!-- POST DETAILS -->
+    </div>
+    <div class="col-md-9 p-0 px-md-4">
+      <div id="feed-header" class="row mx-0">
+        <div class="col-12 m-0 p-0 d-flex my-auto">
+          <ul class="nav nav-tabs w-100" id="account-tab" role="tablist" style="background-color: #f1eded;">
+            <li class="nav-item mr-4" role="presentation">
+              <!-- <a class="nav-link active" id="post-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts"
+              aria-selected="true">Posts</a> -->
+              <select name="sort-posts" id="sort-post-select" class="btn btn-sm btn-outline-dark my-auto">
+                <option value="date-latest" selected>Date (Newest first)</option>
+                <option value="date-oldest">Date (Oldest first)</option>
+                <option value="likes">Most liked</option>
+              </select>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="btn btn-sm btn-outline-dark ml-auto my-auto" data-toggle="modal"
+                data-target="#filter-modal">Filter</button>
+              <!-- <a class="nav-link" id="questions-tab" data-toggle="tab" href="#questions" role="tab" aria-controls="questions"
+              aria-selected="false">Questions</a> -->
+            </li>
+            <!-- <li class="nav-item" role="presentation">
+            <a class="nav-link" id="tag-tab" data-toggle="tab" href="#tags" role="tab" aria-controls="tags"
+              aria-selected="false">Followed tags</a>
+          </li> -->
+          </ul>
+          <!-- <select name="sort-posts" id="sort-post-select" class="btn btn-sm btn-outline-dark my-auto">
+          <option value="date-latest" selected>Date (Newest first)</option>
+          <option value="date-oldest">Date (Oldest first)</option>
+          <option value="likes">Most liked</option>
+        </select>
+
+        <button class="btn btn-sm btn-outline-dark ml-auto my-auto" data-toggle="modal" data-target="#filter-modal">Filter</button> -->
+        </div>
+      </div>
+      <!-- Search table content started -->
+      <div class="row mt-3 ml-0">
+        <div class="col-md-3">
+          <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+        </div>
+        <div class="col-md-9">
+          <!-- TITLE -->
+          <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">Demo Test Post1</a>
+          
+          <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=JAVA" 
+                          style="background-color: #d1dbe7!important;color: #222222!important;" 
+                          class="badge badge-light m-1 px-2">JAVA</a></p>
+          <div class="row m-0 p-0">
+            <p class="text-muted my-md-1">
+              <strong>By <a id="post-author" href="/profile/testuser1" style="color: #007bff;">testuser1</a>, <span id="post-author-reputation"
+                  class="badge badge-warning"></span></strong>
+              Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+            </p>
+            <div class="mr-0 ml-auto d-flex">
+              <p class="small mx-2 p-0">
+                Views : <span id="post-views">1</span>
+              </p>
+              <p class="small mx-2 p-0">
+                Likes : <span id="post-likes">1</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="col-12 m-0 px-0 border-bottom border-muted">
+      <div class="row mt-3 ml-0">
+        <div class="col-md-3">
+          <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+        </div>
+        <div class="col-md-9">
+          <!-- TITLE -->
+          <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">Demo Test Post2</a>
+          <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=LINUX" 
+            style="background-color: #d1dbe7!important;color: #222222!important;" 
+            class="badge badge-light m-1 px-2">LINUX</a></p> 
+          <div class="row m-0 p-0">
+            <p class="text-muted my-md-1">
+              <strong>By <a id="post-author" href="" style="color: #007bff;">testuser2</a>, <span id="post-author-reputation"
+                  class="badge badge-warning"></span></strong>
+              Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+            </p>
+            <div class="mr-0 ml-auto d-flex">
+              <p class="small mx-2 p-0">
+                Views : <span id="post-views">2</span>
+              </p>
+              <p class="small mx-2 p-0">
+                Likes : <span id="post-likes">2</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="col-12 m-0 px-0 border-bottom border-muted">
+      <div class="row mt-3 ml-0">
+        <div class="col-md-3">
+          <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+        </div>
+        <div class="col-md-9">
+          <!-- TITLE -->
+          <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">Demo Test Post3</a>
+          <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=PHP" 
+            style="background-color: #d1dbe7!important;color: #222222!important;" 
+            class="badge badge-light m-1 px-2">PHP</a></p>
+          <div class="row m-0 p-0">
+            <p class="text-muted my-md-1">
+              <strong>By <a id="post-author" href="" style="color: #007bff;">testuser3</a>, <span id="post-author-reputation"
+                  class="badge badge-warning"></span></strong>
+              Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+            </p>
+            <div class="mr-0 ml-auto d-flex">
+              <p class="small mx-2 p-0">
+                Views : <span id="post-views">3</span>
+              </p>
+              <p class="small mx-2 p-0">
+                Likes : <span id="post-likes">3</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="col-12 m-0 px-0 border-bottom border-muted">
+      <div class="row mt-3 ml-0">
+        <div class="col-md-3">
+          <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+        </div>
+        <div class="col-md-9">
+          <!-- TITLE -->
+          <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">Demo Test Post4</a>
+          <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=AI" 
+            style="background-color: #d1dbe7!important;color: #222222!important;" 
+            class="badge badge-light m-1 px-2">AI</a></p>
+          <div class="row m-0 p-0">
+            <p class="text-muted my-md-1">
+              <strong>By <a id="post-author" href="" style="color: #007bff;">testuser4</a>, <span id="post-author-reputation"
+                  class="badge badge-warning"></span></strong>
+              Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+            </p>
+            <div class="mr-0 ml-auto d-flex">
+              <p class="small mx-2 p-0">
+                Views : <span id="post-views">1</span>
+              </p>
+              <p class="small mx-2 p-0">
+                Likes : <span id="post-likes">2</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="col-12 m-0 px-0 border-bottom border-muted">
+      <div class="row mt-3 ml-0">
+        <div class="col-md-3">
+          <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+        </div>
+        <div class="col-md-9">
+          <!-- TITLE -->
+          <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">Demo Test Post5</a>
+          <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=GIT" 
+            style="background-color: #d1dbe7!important;color: #222222!important;" 
+            class="badge badge-light m-1 px-2">GIT</a></p>
+          <div class="row m-0 p-0">
+            <p class="text-muted my-md-1">
+              <strong>By <a id="post-author" href="" style="color: #007bff;">testuser5</a>, <span id="post-author-reputation"
+                  class="badge badge-warning"></span></strong>
+              Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+            </p>
+            <div class="mr-0 ml-auto d-flex">
+              <p class="small mx-2 p-0">
+                Views : <span id="post-views">1</span>
+              </p>
+              <p class="small mx-2 p-0">
+                Likes : <span id="post-likes">2</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="col-12 m-0 px-0 border-bottom border-muted">
+      <!-- Search table content ended -->
+    </div>
+
+  </div>
+
+  <div id="filter-modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Filter posts</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body w-100">
+          <div class="form-group">
+            <label for="filter-tags">Tags (Separate with comma)</label>
+            <input id="filter-tags" class="border border-dark form-control form-control-sm" type="text"
+              placeholder="Eg: Python, NodeJS">
+          </div>
+          <div class="form-group">
+            <label for="filter-content">Post</label>
+            <textarea id="filter-content" class="border border-dark form-control form-control-sm"
+              placeholder="Search terms/phrases in post titles/content"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="filter-user">User by username/name</label>
+            <input id="filter-user" class="border border-dark form-control form-control-sm" type="text"
+              placeholder="john_doe/John Doe">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="filter-apply">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

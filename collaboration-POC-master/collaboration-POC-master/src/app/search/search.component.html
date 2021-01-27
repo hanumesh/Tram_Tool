@@ -1,0 +1,354 @@
+<app-header></app-header>
+<!-- <p style="padding-top: 8%;margin-left: 5%;">
+  Search page!!!
+</p>  -->
+
+<div class="container" style="padding-top: 8%;padding-bottom: 6%;">
+  <div class="row m-0 p-0 pt-4" style="padding-top: 18%;margin-left: 5%;">
+
+    <h3><span class="text-muted">Searching for :</span></h3>
+    <hr class="border-bottom border-light col-12 p-0" style="border-bottom: 1px solid #dee2e6!important;">
+
+    <ul class="nav nav-tabs w-100" id="account-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="home-tab" (click)="searchPostsBtn()" data-toggle="tab" href="#posts" role="tab"
+          aria-controls="posts" aria-selected="true">Posts</a>
+      </li>
+      <!-- <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">Questions</a>
+        </li> -->
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" (click)="searchTagsBtn()" data-toggle="tab" href="#tags" role="tab"
+          aria-controls="tags" aria-selected="false">Tags</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" (click)="searchUsersBtn()" data-toggle="tab" href="#users" role="tab"
+          aria-controls="tags" aria-selected="false">Users</a>
+      </li>
+    </ul>
+  </div>  
+
+  <div *ngIf="isTag">
+  
+  <div *ngIf="isShowTagsContent; else loggedOut">
+    <div class="row mt-3 ml-0" style="margin-bottom: 1%;">
+      <!-- <div class="col-md-3">
+        <p>No more Tags</p>       
+      </div> -->
+
+      <div class="col-md-4 col-6 col-lg-3 my-2">
+        <div class="card">
+          <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+          <div class="card-body">Miss behind herself score say care medical.</div> 
+          <div class="card-footer">
+            Used: 3 times
+            <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-6 col-lg-3 my-2">
+        <div class="card">
+          <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+          <div class="card-body">Miss behind herself score say care medical.</div> 
+          <div class="card-footer">
+            Used: 3 times
+            <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-6 col-lg-3 my-2">
+        <div class="card">
+          <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+          <div class="card-body">Miss behind herself score say care medical.</div> 
+          <div class="card-footer">
+            Used: 3 times
+            <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-6 col-lg-3 my-2">
+        <div class="card">
+          <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+          <div class="card-body">Miss behind herself score say care medical.</div> 
+          <div class="card-footer">
+            Used: 3 times
+            <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-6 col-lg-3 my-2">
+        <div class="card">
+          <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+          <div class="card-body">Miss behind herself score say care medical.</div> 
+          <div class="card-footer">
+            Used: 3 times
+            <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-6 col-lg-3 my-2">
+        <div class="card">
+          <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+          <div class="card-body">Miss behind herself score say care medical.</div> 
+          <div class="card-footer">
+            Used: 3 times
+            <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-6 col-lg-3 my-2">
+        <div class="card">
+          <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+          <div class="card-body">Miss behind herself score say care medical.</div> 
+          <div class="card-footer">
+            Used: 3 times
+            <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-6 col-lg-3 my-2">
+        <div class="card">
+          <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+          <div class="card-body">Miss behind herself score say care medical.</div> 
+          <div class="card-footer">
+            Used: 3 times
+            <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+            </div>
+        </div>
+      </div>
+
+     </div>    
+  </div>
+  <ng-template #loggedOut>
+    <div>No more tag's.</div>    
+  </ng-template>
+</div>
+
+<div *ngIf="isUser">
+  <div *ngIf="isShowUsersContent">
+    <div class="row mt-3 ml-0" style="margin-bottom: 1%;">
+      <div class="col-md-3">
+        <p>No more User's</p>       
+      </div>
+    </div>   
+  </div>
+</div>
+
+  <div *ngIf="isShowPostsContent">
+    <div class="row mt-3 ml-0" style="margin-bottom: 1%;">
+      <div class="col-md-3">
+        <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+      </div>
+      <div class="col-md-9">
+        <!-- TITLE -->
+        <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">
+          Represent usually bring ahead perform trouble door avoid. Million nearly skin. Also into for real ex...
+        </a>
+
+        <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=JAVA"
+            style="background-color: #d1dbe7!important;color: #222222!important;" class="badge badge-light m-1 px-2">#
+            JAVA</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># PYTHON</a>
+        </p>
+        <div class="row m-0 p-0">
+          <p class="text-muted my-md-1">
+            <strong>By <a id="post-author" href="/profile/testuser1" style="color: #007bff;">testuser1</a>, <span
+                id="post-author-reputation" class="badge badge-warning"></span></strong>
+            Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+          </p>
+          <div class="mr-0 ml-auto d-flex">
+            <p class="small mx-2 p-0">
+              Views : <span id="post-views">1</span>
+            </p>
+            <p class="small mx-2 p-0">
+              Likes : <span id="post-likes">1</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 m-0 px-0 border-bottom border-muted">
+    <div class="row mt-3 ml-0" style="margin-bottom: 1%;">
+      <div class="col-md-3">
+        <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+      </div>
+      <div class="col-md-9">
+        <!-- TITLE -->
+        <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">Director senior walk write law information. Author
+          determine position how.</a>
+
+        <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=JAVA"
+            style="background-color: #d1dbe7!important;color: #222222!important;" class="badge badge-light m-1 px-2">#
+            SPRING</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># WBF</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># GIT</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># ORACLE</a>
+        </p>
+        <div class="row m-0 p-0">
+          <p class="text-muted my-md-1">
+            <strong>By <a id="post-author" href="/profile/testuser1" style="color: #007bff;">testuser1</a>, <span
+                id="post-author-reputation" class="badge badge-warning"></span></strong>
+            Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+          </p>
+          <div class="mr-0 ml-auto d-flex">
+            <p class="small mx-2 p-0">
+              Views : <span id="post-views">1</span>
+            </p>
+            <p class="small mx-2 p-0">
+              Likes : <span id="post-likes">1</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 m-0 px-0 border-bottom border-muted">
+    <div class="row mt-3 ml-0" style="margin-bottom: 1%;">
+      <div class="col-md-3">
+        <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+      </div>
+      <div class="col-md-9">
+        <!-- TITLE -->
+        <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">During effect major million. Manage two finally
+          leave join. Civil politics represent. Everybody care...</a>
+
+        <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=JAVA"
+            style="background-color: #d1dbe7!important;color: #222222!important;" class="badge badge-light m-1 px-2">#
+            C</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># STRING</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># CSS</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># REACTJS</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># OBJECTIVE-C</a>
+        </p>
+        <div class="row m-0 p-0">
+          <p class="text-muted my-md-1">
+            <strong>By <a id="post-author" href="/profile/testuser1" style="color: #007bff;">testuser1</a>, <span
+                id="post-author-reputation" class="badge badge-warning"></span></strong>
+            Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+          </p>
+          <div class="mr-0 ml-auto d-flex">
+            <p class="small mx-2 p-0">
+              Views : <span id="post-views">1</span>
+            </p>
+            <p class="small mx-2 p-0">
+              Likes : <span id="post-likes">1</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 m-0 px-0 border-bottom border-muted">
+    <div class="row mt-3 ml-0" style="margin-bottom: 1%;">
+      <div class="col-md-3">
+        <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+      </div>
+      <div class="col-md-9">
+        <!-- TITLE -->
+        <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">Include recent write treat able fly. Hold tax the
+          as paper. Carry score ground war place deep. Push ...</a>
+
+        <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=JAVA"
+            style="background-color: #d1dbe7!important;color: #222222!important;" class="badge badge-light m-1 px-2">#
+            LIST</a></p>
+        <div class="row m-0 p-0">
+          <p class="text-muted my-md-1">
+            <strong>By <a id="post-author" href="/profile/testuser1" style="color: #007bff;">testuser1</a>, <span
+                id="post-author-reputation" class="badge badge-warning"></span></strong>
+            Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+          </p>
+          <div class="mr-0 ml-auto d-flex">
+            <p class="small mx-2 p-0">
+              Views : <span id="post-views">1</span>
+            </p>
+            <p class="small mx-2 p-0">
+              Likes : <span id="post-likes">1</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 m-0 px-0 border-bottom border-muted">
+    <div class="row mt-3 ml-0" style="margin-bottom: 1%;">
+      <div class="col-md-3">
+        <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+      </div>
+      <div class="col-md-9">
+        <!-- TITLE -->
+        <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">Another seem simple organization feel
+          responsibility suggest. Best only week interest office almost ...</a>
+
+        <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=JAVA"
+            style="background-color: #d1dbe7!important;color: #222222!important;" class="badge badge-light m-1 px-2">#
+            BASH</a></p>
+        <div class="row m-0 p-0">
+          <p class="text-muted my-md-1">
+            <strong>By <a id="post-author" href="/profile/testuser1" style="color: #007bff;">testuser1</a>, <span
+                id="post-author-reputation" class="badge badge-warning"></span></strong>
+            Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+          </p>
+          <div class="mr-0 ml-auto d-flex">
+            <p class="small mx-2 p-0">
+              Views : <span id="post-views">1</span>
+            </p>
+            <p class="small mx-2 p-0">
+              Likes : <span id="post-likes">1</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 m-0 px-0 border-bottom border-muted">
+    <div class="row mt-3 ml-0" style="margin-bottom: 1%;">
+      <div class="col-md-3">
+        <img src="assets/header.png" alt="" id="Profile picture" class="w-100">
+      </div>
+      <div class="col-md-9">
+        <!-- TITLE -->
+        <a href="" id="post-title" class="h5 text-dark col-md-6 p-0">asdsad</a>
+
+        <p id="post-tags" class="my-2">Tags : <a href="/posts?filterTags=JAVA"
+            style="background-color: #d1dbe7!important;color: #222222!important;" class="badge badge-light m-1 px-2">#
+            JAVA</a>
+          <a href="/posts?filterTags=JAVA" style="background-color: #d1dbe7!important;color: #222222!important;"
+            class="badge badge-light m-1 px-2"># C</a>
+        </p>
+        <div class="row m-0 p-0">
+          <p class="text-muted my-md-1">
+            <strong>By <a id="post-author" href="/profile/testuser1" style="color: #007bff;">testuser1</a>, <span
+                id="post-author-reputation" class="badge badge-warning"></span></strong>
+            Posted <span id="post-created">1/19/2021 2:05:10 PM</span>
+          </p>
+          <div class="mr-0 ml-auto d-flex">
+            <p class="small mx-2 p-0">
+              Views : <span id="post-views">1</span>
+            </p>
+            <p class="small mx-2 p-0">
+              Likes : <span id="post-likes">1</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 m-0 px-0 border-bottom border-muted">
+
+  </div>
+
+
+
+</div>
+
+<app-footer></app-footer>

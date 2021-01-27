@@ -1,0 +1,72 @@
+<app-header></app-header>
+<!-- <p style="padding-top: 8%;margin-left: 5%;">
+  create-post works!
+</p> -->
+
+<div class="container" style="padding-top: 8%;padding-left: 15%;padding-right: 15%;">
+  <!-- <div class="row m-0 p-0"> -->
+    <!-- create-post works! -->
+    <h2 style="padding-left: 22%;"> Create new Post</h2>
+    <form [formGroup]="createPostForm" (ngSubmit)="oncreatePostSubmit()">      
+        <div class="row">
+          <div class="col-md-10">
+            <div class="form-group">
+            <label for="title">Title
+              <span class="required-asteric" style="color:blue;">*</span> </label>
+            <input type="text" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+              <div *ngIf="f.title.errors.required">Title is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10">
+          <div class="form-group">
+            <label for="title">Content
+              <span class="required-asteric" style="color:blue;">*</span>
+            </label>
+            <textarea type="text" formControlName="content" class="form-control" 
+                [ngClass]="{ 'is-invalid': submitted && f.content.errors }"></textarea>
+    
+            <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
+              <div *ngIf="f.content.errors.required">Content is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10">
+          <div class="form-group">
+          <label for="tags">Tags - (Optional) Comma separated values</label>
+          <input type="text" formControlName="tags" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tags.errors }" />
+          <div *ngIf="submitted && f.tags.errors" class="invalid-feedback">
+            <div *ngIf="f.tags.errors.required">Tags is required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="form-group" style="margin-left:530px">
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Save Post
+        </button>
+      </div>
+
+    </form>
+  <!-- </div> -->
+</div>
+
+<!-- <div class="form-group">
+  <label for="firstName">First Name</label>
+  <input type="text" formControlName="firstName" class="form-control" 
+  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+      <div *ngIf="f.firstName.errors.required">First Name is required</div>
+  </div>
+</div> -->
+
+<app-footer></app-footer>

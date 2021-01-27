@@ -26,6 +26,13 @@ import { FilterByUserPipe } from './filter-by-user.pipe';
 import { AutomateIdeasComponent } from './automate-ideas/automate-ideas.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { AutomationScoreComponent } from './automation-score/automation-score.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
+import { PostsComponent } from './posts/posts.component';
+import { FollowIdeasComponent } from './follow-ideas/follow-ideas.component';
+import { DiscussionPostsTrendsComponent } from './discussion-posts-trends/discussion-posts-trends.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { SearchComponent } from './search/search.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +52,14 @@ import { AutomationScoreComponent } from './automation-score/automation-score.co
     FilterByUserPipe,
     AutomateIdeasComponent,
     QuestionsComponent,
-    AutomationScoreComponent
+    AutomationScoreComponent,
+    MyprofileComponent,
+    PostsComponent,
+    FollowIdeasComponent,
+    DiscussionPostsTrendsComponent,
+    HomePageComponent,
+    SearchComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,

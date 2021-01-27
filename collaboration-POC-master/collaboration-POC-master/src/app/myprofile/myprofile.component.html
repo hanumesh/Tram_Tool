@@ -1,0 +1,295 @@
+<app-header></app-header>
+<!-- <p style="padding-top: 8%;margin-left: 5%;">
+  myprofile works!
+</p> -->
+<div class="containter_myprofile">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <div id="profile-picture" clss="col">
+          <img src="assets/default_image.png" alt="Profile picture">
+        </div>
+      </div>
+      <div class="row" style="padding-top: 6px;"><b>Kishore Kollipora</b>
+        <i style="margin-left: 4px;" class="fas fa-edit" (click)="editProfilePopup()"></i></div>
+    </div>
+
+    <div class="col-md-4" style="padding-top: 2%;">
+      <div class="row"><b style="margin-right: 9px;">First Name</b>: Kishore</div>
+      <div class="row mt-md-1"><b style="margin-right: 10px;">Last Name</b>: Kollipora</div>
+      <div class="row mt-md-1"><b style="margin-right: 48px;">Email</b>: kishore.kollipora@aricent.com</div>
+      <div class="row" style="margin-top: 10px;"><button type="button" class="btn btn-link">1 Posts</button>
+        <button type="button" class="btn btn-link">5 Followers</button>
+        <button type="button" class="btn btn-link">5 Following</button></div>
+    </div>
+
+    <hr class="border-bottom col-12 p-0">
+
+    <ul class="nav nav-tabs w-100" id="account-tab" role="tablist" style="background-color: #f1eded;">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="post-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts"
+          aria-selected="true">Posts</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="questions-tab" data-toggle="tab" href="#questions" role="tab" aria-controls="questions"
+          aria-selected="false">Questions</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="tag-tab" data-toggle="tab" href="#tags" role="tab" aria-controls="tags"
+          aria-selected="false">Followed tags</a>
+      </li>
+    </ul>
+
+    <div class="tab-content w-fill" id="account-tab-content">
+      <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+        <!-- <div class="row p-0 m-0" id="posts-grid">
+
+          <h4 class="mt-2">Posts tab content</h4>
+          <p>Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi
+            qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro
+            synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher
+            retro keffiyeh dreamcatcher synth.</p>
+
+        </div> -->
+        
+        <div class="row m-0 p-0">
+          <div class="col-md-4 col-6 col-lg-3 my-2">
+            <div class="card">
+              <div class="card-header"><strong><a id="tag-cardHeader" href="" 
+                style="color:#007bff;font-size: 20px;">SPRING</a></strong></div>
+              <div class="card-body">Miss behind herself score say care medical.</div> 
+              <div class="card-footer">
+                Used: 3 times
+                <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-6 col-lg-3 my-2">
+            <div class="card">
+              <div class="card-header"><strong><a id="tag-cardHeader" href="" style="color:#007bff;font-size: 20px;">POSTGRESQL</a></strong></div>
+              <div class="card-body">Far she cover create.Far she cover create.</div> 
+              <div class="card-footer">
+                Used: 2 times
+                <button class="ml-auto btn btn-sm btn-outline-primary">Follow</button>
+              </div>
+            </div>
+          </div>
+          </div>
+
+      </div>
+      <div class="tab-pane fade" id="tags" role="tabpanel" aria-labelledby="tags-tab">
+        <div class="row p-0" id="tags-list">
+          <!-- <h4 class="mt-2">Tags tab content</h4>
+          <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut,
+            mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum
+            turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis.
+            Nunc facilisis leo at faucibus adipiscing.</p> -->
+
+            <div class="col-12">
+              <ul class="list-group w-fill">              
+                <a href="#">
+                    <li class="list-group-item text-dark"><span class="h6">pandas</span> -
+                        <span class="text-decoration-none"> Clearly church memory feeling student.
+                          Clearly church memory feeling student.
+                          Clearly church memory feeling student.Clearly church memory feeling student.
+                          Clearly church memory feeling student.
+                        </span></li>
+                </a> 
+            </ul>
+            </div>
+
+            <div class="col-12">
+              <ul class="list-group w-fill">              
+                <a href="#">
+                    <li class="list-group-item text-dark"><span class="h6">android</span> -
+                        <span class="text-decoration-none"> Within right data show would record.</span></li>
+                </a> 
+            </ul>
+            </div>
+            
+        </div>
+      </div>
+      <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tab">
+        <div class="row p-0 m-0" id="questions-list">
+         <h4 class="mt-2">Questions tab content</h4>
+          <p>Donec vel placerat quam, ut euismod risus. Sed a mi suscipit, elementum sem a, hendrerit velit. Donec at
+            erat magna. Sed dignissim orci nec eleifend egestas. Donec eget mi consequat massa vestibulum laoreet.
+            Mauris et ultrices nulla, malesuada volutpat ante. Fusce ut orci lorem. Donec molestie libero in tempus
+            imperdiet. Cum sociis natoque penatibus et magnis.</p> 
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="tab-content w-fill" id="account-tab-content">
+      <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+          <div class="row p-0 m-0" id="posts-grid"></div>
+      </div>
+      <div class="tab-pane fade" id="tags" role="tabpanel" aria-labelledby="tags-tab">
+          <div class="row p-0 m-0" id="tags-list">
+              <ul class="list-group w-fill">
+                  {% for tag in user.followed_tags %}
+                  <a href="{{ url_for('posts.view_tag', title=tag.title)}}">
+                      <li class="list-group-item text-dark"><span class="h6">{{tag.title}}</span> -
+                          <span class="text-decoration-none">{{tag.description}}</span></li>
+                  </a>
+              {% endfor %}
+              </ul>
+          </div>
+      </div>
+      <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tab">
+          <div class="row p-0 m-0" id="questions-list"></div>
+      </div>
+  </div> -->
+
+    <!-- <div class="col-md-4"> -->
+    <!-- <div class="row">
+        <a style="color: #004f6bfa;" href="#posts" class="btn btn-link">1 Posts</a>
+      </div>
+      <div class="row">
+        <div clss="col"> <button type="button" class="btn btn-link">5 Followers</button></div>
+      </div>
+      <div class="row">
+        <div clss="col"> <button type="button" class="btn btn-link">5 Following</button></div>
+      </div> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+
+
+<!-- The Modal-->
+<div class="modal" id="reuploadPopupModal" [style.display]="editProfileShowModal ? 'block' : 'none'">
+  <div class="modal-dialog" style="margin-top: 5%; box-shadow: 0 2px 50px #08080891;max-width: 502px;">
+    <div class="modal-content">
+
+      <!-- <div *ngIf="isRUSuccessResp" class="alert alert-success" role="alert">
+        <p style="font-size: 13px">Firewall Deploy submitted successfully!</p>
+      </div> -->
+
+      <div *ngIf="isRUErrorResponse" class="alert alert-danger" role="alert">
+        <p style="font-size: 13px">Only jpg, jpeg and png formats are allowed.</p>
+      </div>
+
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="clearRegisterForm()" data-toggle="tooltip"
+          data-placement="top" title="Close">&times;</button>
+      </div>
+      <div class="modal-body" style="height: 385px; color: black;border-radius: 
+      5px;padding-top: 4%;overflow-y: auto;">
+
+        <form [formGroup]="editProfileForm" (submit)="onReUploadFormSubmit()">
+          <div class="row">
+            <div class="col-sm-12">
+              <div>
+                <label for="firstName" style="margin-right: 46px;"><b>First Name<span class="required-asteric"
+                      style="color:blue;">*</span></b></label>&ensp;
+                <input type="text" formControlName="firstName" id="firstName" placeholder="Kishore"
+                  style="width: 314px;border-width: 1px;color:black"
+                  [ngClass]="{ 'is-invalid': editProfileSubmitted && f.firstName.errors }">
+
+                <div *ngIf="editProfileSubmitted && f.firstName.errors" class="text-danger">
+                  <div *ngIf="f.firstName.errors.required" style="font-size: 13px;
+                    font-weight: 400; color: #dc3545;line-height: 19px;margin-left: 135px; ">First Name is mandatory
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="padding-top: 10px;" class="col-sm-12">
+              <div>
+                <label for="LastName" style="margin-right: 46px;"><b>Last Name<span class="required-asteric"
+                      style="color:blue;">*</span></b></label>&ensp;
+                <input type="text" formControlName="lastName" id="lastNameID" placeholder="Kollipora"
+                  style="width: 314px;border-width: 1px;color:black;margin-left: 2px;"
+                  [ngClass]="{ 'is-invalid': editProfileSubmitted && f.lastName.errors }">
+
+                <div *ngIf="editProfileSubmitted && f.lastName.errors" class="text-danger">
+                  <div *ngIf="f.lastName.errors.required" style="font-size: 13px;
+                    font-weight: 400; color: #dc3545;line-height: 19px;margin-left: 135px; ">Last Name is mandatory
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="padding-top: 10px;" class="col-sm-12">
+              <div>
+                <label for="email" style="margin-right: 46px;"><b>Email</b></label>&ensp;
+                <input type="email" formControlName="email" id="email" [(ngModel)]="emailid"
+                  style="width: 314px;border-width: 1px;color:black;margin-left: 48px;background-color:#efeeee;border-color: black;"
+                  [ngClass]="{ 'is-invalid': editProfileSubmitted && f.email.errors }" disabled>
+
+                <div *ngIf="editProfileSubmitted && f.email.errors" class="text-danger">
+                  <div *ngIf="f.email.errors.required" style="font-size: 13px;
+                    font-weight: 400; color: #dc3545;line-height: 19px; margin-left: 135px;">Email is mandatory</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="padding-top: 10px;" class="col-sm-12">
+              <div>
+                <label for="Password" style="margin-right: 46px;"><b>Password<span class="required-asteric"
+                      style="color:blue;">*</span></b></label>&ensp;
+                <input type="password" formControlName="password" id="PasswordID" placeholder="**********"
+                  style="width: 314px;border-width: 1px;color:black;margin-left: 12px;"
+                  [ngClass]="{ 'is-invalid': editProfileSubmitted && f.password.errors }">
+
+                <div *ngIf="editProfileSubmitted && f.password.errors" class="text-danger" style="font-size: 13px;
+                font-weight: 400; color: #dc3545;line-height: 19px;margin-left: 135px; ">
+                  <div *ngIf="f.password.errors.required">Password is mandatory</div>
+                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="padding-top: 10px;" class="col-sm-13">
+              <div>
+                <label for="ConfirmPassword" style="margin-right: 32px;"><b style="margin-left: 15px;">Confirm Pwd<span
+                      class="required-asteric" style="color:blue;">*</span></b></label>&ensp;
+                <input type="password" formControlName="confirmPassword" id="confirmPassword" placeholder="**********"
+                  style="width: 314px;border-width: 1px;color:black;"
+                  [ngClass]="{ 'is-invalid': editProfileSubmitted && f.confirmPassword.errors }">
+
+                <div *ngIf="editProfileSubmitted && f.confirmPassword.errors" class="text-danger" style="font-size:13px;
+                font-weight: 400; color: #dc3545;line-height:19px;margin-left:150px;">
+                  <div *ngIf="f.confirmPassword.errors.required">Confirm Password is mandatory</div>
+                  <div *ngIf="f.confirmPassword.errors.minlength">Confirm Password must be at least 6 characters</div>
+                  <div *ngIf="f.confirmPassword.errors.mustMatch">Password & Confirm Password must match</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="padding-top: 10px;" class="col-sm-12">
+              <div>
+                <label for="Profileimage" style="margin-right: 10px;margin-top:10px;margin-bottom:20px;"><b>Profile
+                    Image</b></label>
+                <input (change)="onRUFileSelected($event)" type="file" formControlName="attachments" id="profileImage"
+                  [ngClass]="{ 'is-invalid': editProfileSubmitted && f.attachments.errors }" style="margin-left:22px;">
+                <div *ngIf="editProfileSubmitted && f.attachments.errors" class="text-danger">
+                  <div *ngIf="f.attachments.errors.required" style="font-size: 13px;
+                    font-weight: 400; color: #dc3545;line-height: 19px; ">Attachment is mandatory</div>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:12px;padding-left: 16px;"><b>Note:</b> Only jpg, jpeg and png formats are allowed!</p>
+          </div>
+          <div style="margin-left: 80%;">
+            <button class="btn btn-primary" id="editProfileBtn" type="submit">Update</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

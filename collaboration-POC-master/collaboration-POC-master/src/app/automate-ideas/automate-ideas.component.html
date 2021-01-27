@@ -1,4 +1,7 @@
+<div>
+
 <app-header></app-header>
+
 <div class="jumbotron" style="background-color: #fff;">
 
   <div class="row">
@@ -33,14 +36,12 @@
       <!-- Another variation with a button Started -->
       <div class="form-group has-search">
         <!-- <button class="btn btn-default" contenteditable="false"><i class="fa fa-search form-control-feedback"></i></button> -->
-
         <span class="fa fa-search form-control-feedback"></span>
         <input type="text" id="searchinput" class="form-control" [(ngModel)]="automationIdea"
           placeholder="Search Automation Idea Title">
         <span id="crossId" *ngIf="automationIdea" (click)="clearText()"
           class="far fa-times-circle form-control-feedback" aria-hidden="true"
           style="cursor: pointer; pointer-events: all; padding-left: 253px; top: 2px;" uib-tooltip="clear">
-
         </span>
       </div>
       <!-- Another variation with a button Ended -->
@@ -48,7 +49,7 @@
     <div class="col-md-3">
       <select class="form-control" id="FormControlSelect1" [(ngModel)]="selectedValue1">
         <option value="" [disabled]="false">STATUS | Any</option>
-        <option *ngFor="let status of defaultStatusArry" [ngValue]="status">{{status}}</option>
+        <option *ngFor="let status of defaultStatusArry">{{status}}</option>
       </select>
     </div>
 
@@ -71,7 +72,7 @@
 
   <!-- Data table started -->
   <table class="table table-bordered" style="margin-top: 0%">
-    <thead>
+    <thead style="background-color: lightgrey;">
       <tr>
         <th>Automation Idea Title</th>
         <th style="width:90px">Priority</th>
@@ -81,7 +82,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasksList | taskNameFilter:taskname | filterByPriority: selectedValue2
+      <tr *ngFor="let task of tasksList | taskNameFilter:automationIdea | filterByPriority: selectedValue2
                                                | filterByStatus: selectedValue1 
                                                | filterByUser: selectedValue3
                                                | filterByPriorityStatus: [selectedValue2,selectedValue1]
@@ -274,7 +275,7 @@
                   <!-- <span class="required-asteric" style="color:blue;">*</span> -->
                 </label>
                 <select class="form-control" formControlName="operatingProcess" [(ngModel)]="operatingProcessModel"
-                  (change)="changeFWName($event)" id="FormControlSelect1"
+                  (change)="operatingProcFunc($event)" id="FormControlSelect1"
                   [ngClass]="{ 'is-invalid': submitted && f.operatingProcess.errors }">
                   <option value="" [disabled]="false">--- Select a Value ---</option>
                   <option *ngFor="let operatingProcess of operatingProcessArray">{{operatingProcess}}</option>
@@ -311,7 +312,7 @@
                   <!-- <span class="required-asteric" style="color:blue;">*</span> -->
                 </label>
                 <select class="form-control" formControlName="workInstructions" [(ngModel)]="workInstructionsModel"
-                  (change)="changeFWName($event)" id="FormControlSelect1"
+                  (change)="workInstructionsFunc($event)" id="FormControlSelect1"
                   [ngClass]="{ 'is-invalid': submitted && f.workInstructions.errors }">
                   <option value="" [disabled]="false">--- Select a Value ---</option>
                   <option *ngFor="let workInstructions of workInstructionsArray">{{workInstructions}}</option>
@@ -382,7 +383,7 @@
             id="closeModal" #closebutton debounce=1000 (click)="onDFSubmit()">More Questions
             </button> -->
             <button type="submit" class="btn btn-primary" 
-            id="closeModal" #closebutton debounce=1000 
+             #closebutton debounce=1000 
             class="close" data-dismiss="modal" (click)="onDFSubmit()">More Questions
             </button>
            
@@ -392,5 +393,6 @@
 
     </div>
   </div>
+</div>
 </div>
 <!-- Add New Automation Idea Ended -->

@@ -1,5 +1,10 @@
+<!-- <img class="bg-img" src="assets/automation_row.webp" /> -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-  <!--<p>Altran Firewall Deployment Solution</p> -->
+  <!-- <a class="navbar-brand" routerLink="/home" routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact: true}">
+        <div style="text-align:center"><i class="fas fa-home" aria-hidden="true"></i></div>
+        <p style="text-align: center;">Home</p>
+    </a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -19,31 +24,93 @@
 
     </ul>
   </div> -->
+  
   <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto" style="font-size: 15px;">
+    <ul class="navbar-nav mr-auto" style="font-size: 15px;text-align: center;">
+      <li class="nav-item">
+        <a class="nav-link d-flex flex-column" routerLink="/home" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <div style="text-align:center"><i class="fas fa-home" aria-hidden="true"></i></div>
+          <span class="d-none d-sm-inline">HOME</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link d-flex flex-column" routerLink="/automateIdeas" routerLinkActive="active"
           [routerLinkActiveOptions]="{exact: true}">
           <div style="text-align:center"><i class="fa fa-cog" aria-hidden="true"></i></div>
           <span class="d-none d-sm-inline">AUTOMATION IDEAS</span>
         </a>
+      </li>        
+
+      <li class="nav-item dropdown">
+        <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">
+          <div style="text-align:center"> <i class="fas fa-question" aria-hidden="true"></i></div>
+          DISCUSSION FORUM  </a>
+        <!-- <a class="nav-link dropdown-toggle d-flex flex-column" href="http://localhost:5000/questions"
+        data-toggle="dropdown"> -->
+        <!-- <a class="nav-link dropdown-toggle d-flex flex-column" routerLink="http://localhost:5000/questions" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}" data-toggle="dropdown">
+          <div style="text-align:center"> <i class="fas fa-question" aria-hidden="true"></i></div>
+          <span class="d-none d-sm-inline">DISCUSSION FORUM</span>
+        </a> -->
+        <ul class="dropdown-menu">
+          <!-- <li><a class="dropdown-item" href="#"> Create </a></li> -->
+          <!-- <li><a class="dropdown-item" href="#"> Posts </a></li> -->
+          <!-- <li><a class="dropdown-item" href="#"> Follow Ideas </a></li> -->
+          <li><a class="dropdown-item" routerLink="/createPost" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Create Posts</a></li>
+          <li><a class="dropdown-item"  routerLink="/posts" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">View Posts</a></li>
+          <li><a class="dropdown-item" routerLink="/followideas" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Follow Tags</a></li>
+          </ul>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link d-flex flex-column" routerLink="/trends" 
-        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <!-- <li class="nav-item">
+        <a class="nav-link d-flex flex-column" routerLink="/trends" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
           <div style="text-align:center"> <i class="fa fa-bar-chart" aria-hidden="true"></i></div>
           <span class="d-none d-sm-inline">TRENDS</span>
         </a>
+      </li> -->
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">
+          <div style="text-align:center"> <i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+          TRENDS </a>
+        <ul class="dropdown-menu">
+          <li style="margin-bottom: 2px;"><a class="dropdown-item" routerLink="/trends" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Automate Ideas</a></li>
+          <li><a class="dropdown-item" routerLink="/discussionPostsTrends" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">Discussion Posts Trends</a></li>
+          </ul>
+      </li>
+       <!-- <li class="nav-item">
+        <a class="nav-link d-flex flex-column" routerLink="/posts" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <div style="text-align:center"> <i class="material-icons" style="font-size: 15px;">library_books</i></div>
+          <span class="d-none d-sm-inline">POSTS</span>
+        </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link d-flex flex-column" href="http://localhost:5000/questions">
-          <div style="text-align:center"> <i class="fa fa-check-square-o" aria-hidden="true"></i></div>
-          <span class="d-none d-sm-inline">Discussion Forum</span>
+        <a class="nav-link d-flex flex-column" routerLink="/create" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <div style="text-align:center"> <i class="fas fa-plus" aria-hidden="true"></i></div>
+          <span class="d-none d-sm-inline">CREATE</span>
         </a>
       </li>
-<!-- 
+
+      <li class="nav-item">
+        <a class="nav-link d-flex flex-column" routerLink="/followideas" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <div style="text-align:center"><i class="fa fa-check-square-o" aria-hidden="true"></i></div>
+          <span class="d-none d-sm-inline">FOLLOW IDEAS</span>
+        </a>
+      </li> -->
+
+      <!-- 
       <li class="nav-item">
         <a class="nav-link d-flex flex-column" routerLink="/questions" 
         routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -54,16 +121,17 @@
     </ul>
   </div>
 
+
   <!-- <button type="button"><i class="fa fa-user-circle fa-4x" aria-hidden="true"></i></button> -->
   <!-- i class="fa fa-user-circle-o" style="font-size:60px;color:#c9e0e8;"></i> -->
   <!-- <a class="navbar-brand" href="/automateIdeas"><img style="margin-left: 85%;margin-top:-10px;" id="Logoid" -->
-    <!-- <a class="navbar-brand"><img style="margin-left: 89%;margin-top:-10px;" id="Logoid"
+  <!-- <a class="navbar-brand"><img style="margin-left: 89%;margin-top:-10px;" id="Logoid"
       src="assets/Altran.png" />
     <p style="font-size:14px;margin-bottom:-10px;margin-left:7%;padding-left:500px;color:white">Altran collaboration</p>
   </a> -->
   <!--<i class="fa fa-user-circle-o" style="font-size:60px;color:#c9e0e8;"></i>-->
   <!-- profile dropdown started -->
-<!-- 
+  <!-- 
   <div class="collapse navbar-collapse" id="navbar-list-4">
     <ul class="navbar-nav">
         <li class="nav-item dropdown" > 
@@ -97,29 +165,51 @@ padding-right: 10px;margin-left: 28px;padding: 0rem 1rem;" id="navbarDropdownMen
   </div> -->
 
   <!-- ended -->
-
-
-  <a class="navbar-brand"><img style="margin-left: 89%;margin-top:-10px;"
-    id="Logoid" src="assets/Altran.png"/>
-  <p style="font-size:14px;margin-bottom:-10px;color:white;margin-left: 7%;
-        padding-left: 500px;">Altran Collaboration</p></a>
+  <!-- <div id="searchData">
+  <form class="d-block d-lg-flex form-inline my-2 my-lg-0 mx-lg-auto order-lg-2" action="/search" method="POST">
+    <div class="input-group">
+            <input id="search-input" class="form-control w-lg-300" name="query" type="search" placeholder="Post/Questions/Tags/Users" aria-label="Search">
+            <div class="input-group-append">
+                <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>   -->
+<form class="form-inline my-2 my-lg-0">
+  <!-- <i class="fa fa-search"></i> -->
+  <!-- <span class="fa fa-search form-control-feedback"></span> -->
+  <input name="search" class="form-control" type="search" placeholder="Search Post/Tags/Users"
+   style="width:365px;padding-right: 0.5rem; padding-left: 0.5rem">
+  <button class="btn btn-outline-info" id="searchHeaderBtn" (click)="searchBtn()" type="submit">Search</button>
+</form>
+<a class="navbar-brand"><img style="margin-left: 30%;margin-top:0px;" id="Logoid" src="assets/Altran.png" />
+    <!-- <p style="font-size:14px;margin-bottom:-10px;color:white;margin-left: 7%;
+        padding-left: 248px;">Altran Collaboration</p> -->
+  </a>
   <!--<i class="fa fa-user-circle-o" style="font-size:60px;color:#c9e0e8;"></i>-->
-      <!-- profile dropdown started -->
+  <!-- profile dropdown started -->
 
-      <div class="collapse navbar-collapse" id="navbar-list-4">
-          <ul class="navbar-nav">
-              <li class="nav-item dropdown" > 
-              <a class="nav-link dropdown-toggle" style="padding-left: 10px;
-    padding-right: 10px;margin-left: 28px;padding: 0rem 1rem;" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle" id="prfileicon" ></i>         
-              </a>
-              <div class="dropdown-menu" id="drpdnmenu" aria-labelledby="navbarDropdownMenuLink">
-                <!-- <a class="dropdown-item" id="drpdnitm1">{{loggedInUser}}</a> -->
-                 <a class="dropdown-item" id="drpdnitm1">{{LoggedInUserEmail}}</a>
-                <a class="dropdown-item"  id="drpdnitm2" (click)="onLogout()">LogOut</a>
-              </div>
-            </li>   
+  <div class="collapse navbar-collapse" id="navbar-list-4">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="padding-left: 10px;
+    padding-right: 10px;margin-left: 0px;padding: 0rem 1rem;" id="navbarDropdownMenuLink" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle" id="prfileicon"></i>
+        </a>
+         <!-- <div class="dropdown-menu" id="drpdnmenu" aria-labelledby="navbarDropdownMenuLink">          
+          <a class="dropdown-item" id="drpdnitm1">{{LoggedInUserEmail}}</a>
+          <a class="dropdown-item" id="drpdnitm2" (click)="myProfileRedirectFunc()">My Profile</a>
+          <a class="dropdown-item" id="drpdnitm2" (click)="onLogout()">LogOut</a>
+        </div> -->
+
+        <ul class="dropdown-menu dropdown-menu-right" id="drpdnmenu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" id="drpdnitm1">{{LoggedInUserEmail}}</a></li>
+          <li><a class="dropdown-item" id="drpdnitm2" (click)="myProfileRedirectFunc()">My Profile</a></li>
+          <li><a class="dropdown-item" id="drpdnitm2" (click)="onLogout()">LogOut</a></li>
           </ul>
-        </div> 
+      </li>
+    </ul>
+  </div>
 
 </nav>

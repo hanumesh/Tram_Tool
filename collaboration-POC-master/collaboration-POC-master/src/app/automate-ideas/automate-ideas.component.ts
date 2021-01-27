@@ -21,8 +21,8 @@ const URL = 'http://localhost:4200/fileupload/';
 })
 export class AutomateIdeasComponent implements OnInit {
   @ViewChild('closebutton') closebutton;
-  
 
+  LoggedInUserEmail : string;
   isValid = false;
   showModal: boolean;
   registerForm: FormGroup;
@@ -47,7 +47,7 @@ export class AutomateIdeasComponent implements OnInit {
   selectedValue3 = '';
   defaultFirewallValue = '';
 
-  dfPriorityDefaultValue = ''; 
+  dfPriorityDefaultValue = '';
   taskname = '';
   workInstructions = '';
   workInstructionsModel = '';
@@ -82,7 +82,7 @@ export class AutomateIdeasComponent implements OnInit {
     private firewallService: FirewallService,
     private router: Router
   ) {
-   // this.upLoadedDateFDToday = formatDate(this.upLoadedDateFD, 'dd-MM-yyyy hh:mm a', 'en-US', '+0530');
+    // this.upLoadedDateFDToday = formatDate(this.upLoadedDateFD, 'dd-MM-yyyy hh:mm a', 'en-US', '+0530');
     this.firewallService.getAllFirewalls();
     this.registerForm = this.formBuilder.group({
       taskname: ['', [Validators.required, Validators.minLength(6)]],
@@ -107,35 +107,36 @@ export class AutomateIdeasComponent implements OnInit {
   }
 
 
-  getAllFW() {​​​​​
+  getAllFW() {
     this.firewallService.getAllFirewalls().subscribe(
-      (respAllFW) => {​​​​​
+      (respAllFW) => {
         // console.log("all firewalls: " + respAllFW.result.length);
-        console.log("all firewalls: " + JSON.stringify(respAllFW));
+       // console.log("all firewalls: " + JSON.stringify(respAllFW));
         // alert(JSON.stringify(this.firewallService.listOfFirewalls))
         // const tasksList1 = JSON.stringify(this.firewallService.listOfFirewalls);
         // this.tasksList = this.firewallService.listOfFirewalls.result;
-     
+
         this.tasksList = respAllFW.result;
-        if (this.tasksList.length == 0) {​​​​​
+        if (this.tasksList.length == 0) {
           //  alert("spinner test"+ this.tasksList.length);
-          
-        }​​​​​
+
+        }
         //  alert("tasksList>>>>>>>>: "+(this.tasksList.length));
-      }​​​​​, (errorAllFW) => {​​​​​
+      }, (errorAllFW) => {
         console.log(errorAllFW);
         console.log(JSON.stringify(errorAllFW));
         // alert("errorAllFW: "+errorAllFW.message);
-      }​​​​​
+      }
     );
-  }​​​​​
+  }
 
 
 
 
   ngOnInit() {
     this.getAllFW()
-   // this.refreshDataTableDFNav(1);
+    this.LoggedInUserEmail =  localStorage.getItem('LoggedInUserEmail');
+    // this.refreshDataTableDFNav(1);
 
   }
 
@@ -164,7 +165,7 @@ export class AutomateIdeasComponent implements OnInit {
       this.updatedOnValue = formatDate(this.updatedOn, 'dd-MM-yyyy hh:mm a', 'en-US', '+0530');
       // "updatedOn": this.updatedOnValue
       // Dyanmic value
-      this.automationData = { "NewAutomationIdea": { "taskname": this.registerForm.value.taskname, "priority": this.registerForm.value.priority, "upComingMonths": this.registerForm.value.upComingMonths, "operatingProcess": this.registerForm.value.operatingProcess, "workInstructions": this.registerForm.value.workInstructions, "shortDescription": this.registerForm.value.shortDescription, "updatedOn": moment().format("DD/MM/YYYY HH:mm:ss"), "email": "hanum786@gmail.com" } };
+      this.automationData = { "NewAutomationIdea": { "taskname": this.registerForm.value.taskname, "priority": this.registerForm.value.priority, "upComingMonths": this.registerForm.value.upComingMonths, "operatingProcess": this.registerForm.value.operatingProcess, "workInstructions": this.registerForm.value.workInstructions, "shortDescription": this.registerForm.value.shortDescription, "updatedOn": moment().format("DD/MM/YYYY HH:mm:ss"), "email": this.LoggedInUserEmail } };
       console.log("automationData: " + JSON.stringify(this.automationData));
       // this.http.post(this.baseUri , this.automationData).subscribe(
       //   (response) => console.log(response),
@@ -173,24 +174,24 @@ export class AutomateIdeasComponent implements OnInit {
       this.firewallService.createFD(this.automationData).subscribe(
         (respFD) => {
           console.log(JSON.stringify(respFD));
-          if (respFD.id)  {
-           
+          if (respFD.id) {
+
             // this.isDFWSuccessResp = true;
-           // this.closebutton.nativeElement.click();
-           this.clearRegisterForm();
-           this.router.navigateByUrl('/questions');            
+            // this.closebutton.nativeElement.click();
+            this.clearRegisterForm();
+            this.router.navigateByUrl('/questions');
             // setTimeout(() => {
-             
+
             // }, 1000);
-          
-            
+
+
           }
-         // this.isDFWSuccessResp = true;                  
+          // this.isDFWSuccessResp = true;                  
           // this.alert.success("success") 
           // this.hide();
         }, (error) => {
           console.log("Error", error)
-         
+
         }
       );
     }
@@ -302,6 +303,24 @@ export class AutomateIdeasComponent implements OnInit {
     // })
   }
 
+  operatingProcFunc(e) {
+    this.registerForm.get('operatingProcess').setValue(e.target.value, {
+      onlySelf: true
+    })
+    // this.registerForm.get('firewallName').setValue(e.target.value, {
+    //   onlySelf: true
+    // })
+  }
+
+  workInstructionsFunc(e) {
+    this.registerForm.get('workInstructions').setValue(e.target.value, {
+      onlySelf: true
+    })
+    // this.registerForm.get('firewallName').setValue(e.target.value, {
+    //   onlySelf: true
+    // })
+  }
+
   changePriority(e) {
     this.registerForm.get('priority').setValue(e.target.value, {
       onlySelf: true
@@ -315,13 +334,13 @@ export class AutomateIdeasComponent implements OnInit {
     this.selectedValue1 = '';
     this.selectedValue2 = '';
     this.selectedValue3 = '';
-   // this.tasksList  = this.firewallService.getAllFirewalls();
+    // this.tasksList  = this.firewallService.getAllFirewalls();
   }
 
-  refreshDataTableDFNav($event) {       
+  refreshDataTableDFNav($event) {
     //this.tasksList = this.firewallService.getAllFirewalls();
     console.log(this.firewallService.getAllFirewalls())
-    console.log(" this.tasksList",  this.tasksList)
+    console.log(" this.tasksList", this.tasksList)
   }
 
   clearRegisterForm() {
@@ -385,6 +404,6 @@ export class AutomateIdeasComponent implements OnInit {
   questions() {
     // todo ON 201 
     //this.onDFSubmit();
-   
+
   }
 }

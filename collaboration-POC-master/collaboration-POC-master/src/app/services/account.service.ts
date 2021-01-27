@@ -83,6 +83,7 @@ export class AccountService {
   }
 
   logout(token) {
+    alert("Inside logout");
     let urlLogOut = this.baseUri + '/logout';
     //  let token = localStorage.getItem('token');
     let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -93,12 +94,14 @@ export class AccountService {
     };
     return this.http.get(urlLogOut, options).pipe(
       map(LogoutDone => {
+        alert("Inside LogoutDone");
         console.log('LogoutDone', LogoutDone);
         localStorage.removeItem('LoggedInUserEmail');
         localStorage.clear();
         this.router.navigateByUrl('/login');
         // window.location.reload();
       }, (errorHandler) => {
+        alert("Inside error");
         catchError(errorHandler)
       })
     )
