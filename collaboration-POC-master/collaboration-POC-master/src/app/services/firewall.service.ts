@@ -20,7 +20,7 @@ export class Firewall{
   providedIn: 'root'
 })
 export class FirewallService {
-  baseUri: string = 'http://localhost:5000/api/automation/ideas';
+  baseUri: string = 'http://35.154.155.30:5000/api/automation/ideas';
 
   // httpOptions = new HttpHeaders()
   // .set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*');

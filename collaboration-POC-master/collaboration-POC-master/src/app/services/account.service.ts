@@ -15,7 +15,7 @@ import { last } from '@angular/router/src/utils/collection';
 })
 export class AccountService {
 
-  baseUri: string = 'http://localhost:5000/api';
+  baseUri: string = 'http://35.154.155.30:5000/api';
   //  headers = new HttpHeaders().set('Content-Type', 'application/json');
   // headers: new HttpHeaders({
   //   'Content-Type': 'application/json',

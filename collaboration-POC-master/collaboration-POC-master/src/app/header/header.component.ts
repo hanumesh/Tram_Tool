@@ -31,16 +31,16 @@ export class HeaderComponent implements OnInit {
    }
 
   onLogout() {
-    alert("Inside onLogout() ");
+    // alert("Inside onLogout() ");
     this.accountService.logout(this.token).subscribe(LogoutSuccess => {
       console.log('LogoutSuccess', LogoutSuccess)
-      alert("Inside success response "+LogoutSuccess);
+      // alert("Inside success response "+LogoutSuccess);
       this.router.navigateByUrl('/login');
     });
     this.router.navigateByUrl('/login');
   }
   myProfileRedirectFunc(){
-    
+
     this.router.navigateByUrl('/profile');
   }
 }
